@@ -62,14 +62,27 @@ function ProjectVideo({ src }: ProjectVideoProps) {
         />
       </MorphingDialogTrigger>
       <MorphingDialogContainer>
-        <MorphingDialogContent className="relative aspect-video rounded-2xl bg-zinc-50 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950 dark:ring-zinc-800/50">
-          <video
-            src={src}
-            autoPlay
-            loop
-            muted
-            className="aspect-video h-[50vh] w-full rounded-xl md:h-[70vh]"
-          />
+        <MorphingDialogContent>
+          <div  className="relative aspect-video rounded-2xl bg-zinc-50 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950 dark:ring-zinc-800/50">
+            <a href={src} target='_blank'>
+            <video
+                src={src}
+                autoPlay
+                loop
+                muted
+                className="aspect-video h-[50vh] w-full rounded-xl md:h-[70vh]"
+              />
+            </a>
+          </div>
+          <div className='mt-4 mx-4 bg-[var(--color-zinc-950)]'>
+            <p className='text-xs text-gray-500'>Нажмите на видео, чтобы открыть в новой вкладке.</p>
+            <p>Приложение для водителей сервиса <a className='text-sky-500' href="https://mytripline.com" target='_blank'>https://mytripline.com</a>.</p>
+            <p> Скачать можно по ссылкам: <br/>
+              <a href="#" className='hover:underline text-sky-500'>Google play</a> <br/>
+              <a href="#" className='hover:underline text-sky-500'>App store</a>
+            </p>
+            <p>В приложении реализованы функции выбора заказа, отслеживание местоположения</p>
+          </div>
         </MorphingDialogContent>
         <MorphingDialogClose
           className="fixed top-6 right-6 h-fit w-fit rounded-full bg-white p-1"
@@ -131,7 +144,7 @@ export default function Personal() {
       initial="hidden"
       animate="visible"
     >
-      <motion.section
+      {/* <motion.section
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
       >
@@ -141,13 +154,13 @@ export default function Personal() {
             Bridging the gap between design and development.
           </p>
         </div>
-      </motion.section>
+      </motion.section> */}
 
       <motion.section
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
       >
-        <h3 className="mb-5 text-lg font-medium">Selected Projects</h3>
+        <h3 className="mb-5 text-lg font-medium">Портфолио</h3>
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
           {PROJECTS.map((project) => (
             <div key={project.name} className="space-y-2">
@@ -172,7 +185,7 @@ export default function Personal() {
         </div>
       </motion.section>
 
-      <motion.section
+      {/* <motion.section
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
       >
@@ -208,9 +221,9 @@ export default function Personal() {
             </a>
           ))}
         </div>
-      </motion.section>
+      </motion.section> */}
 
-      <motion.section
+      {/* <motion.section
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
       >
@@ -244,13 +257,12 @@ export default function Personal() {
             ))}
           </AnimatedBackground>
         </div>
-      </motion.section>
-
-      <motion.section
+      </motion.section> */}
+      {/* <motion.section
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
       >
-        <h3 className="mb-5 text-lg font-medium">Connect</h3>
+        <h3 className="mb-5 text-lg font-medium">Контакты</h3>
         <p className="mb-5 text-zinc-600 dark:text-zinc-400">
           Feel free to contact me at{' '}
           <a className="underline dark:text-zinc-300" href={`mailto:${EMAIL}`}>
@@ -264,7 +276,7 @@ export default function Personal() {
             </MagneticSocialLink>
           ))}
         </div>
-      </motion.section>
+      </motion.section> */}
     </motion.main>
   )
 }
