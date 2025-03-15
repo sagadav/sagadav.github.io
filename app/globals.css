@@ -19,3 +19,7 @@
     border-color: var(--color-gray-200, currentColor);
   }
 }
+
+a {
+  outline: none !important;
+}

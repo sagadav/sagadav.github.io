@@ -75,11 +75,11 @@ function ProjectVideo({ src }: ProjectVideoProps) {
             </a>
           </div>
           <div className='mt-4 mx-4 bg-[var(--color-zinc-950)]'>
-            <p className='text-xs text-gray-500'>Нажмите на видео, чтобы открыть в новой вкладке.</p>
+            <p className='text-xs text-gray-500 mb-2'>Нажмите на видео, чтобы открыть в новой вкладке.</p>
             <p>Приложение для водителей сервиса <a className='text-sky-500' href="https://mytripline.com" target='_blank'>https://mytripline.com</a>.</p>
             <p> Скачать можно по ссылкам: <br/>
-              <a href="#" className='hover:underline text-sky-500'>Google play</a> <br/>
-              <a href="#" className='hover:underline text-sky-500'>App store</a>
+              <a href="https://play.google.com/store/apps/details?id=org.capacitor.mytripline.app" className='hover:underline text-sky-500'>Google play</a> <br/>
+              <a href="https://apps.apple.com/ru/app/mytripliner/id1668656764" className='hover:underline text-sky-500'>App store</a>
             </p>
             <p>В приложении реализованы функции выбора заказа, отслеживание местоположения</p>
           </div>
@@ -168,14 +168,19 @@ export default function Personal() {
                 <ProjectVideo src={project.video} />
               </div>
               <div className="px-1">
-                <a
+                {/* <a
                   className="font-base group relative inline-block font-[450] text-zinc-900 dark:text-zinc-50"
                   href={project.link}
                   target="_blank"
                 >
                   {project.name}
                   <span className="absolute bottom-0.5 left-0 block h-[1px] w-full max-w-0 bg-zinc-900 transition-all duration-200 group-hover:max-w-full"></span>
-                </a>
+                </a> */}
+                <p
+                  className="font-base group relative inline-block font-[450] text-zinc-900 dark:text-zinc-50"
+                >
+                  {project.name}
+                </p>
                 <p className="text-base text-zinc-600 dark:text-zinc-400">
                   {project.description}
                 </p>
