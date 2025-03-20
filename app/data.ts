@@ -2,8 +2,9 @@ type Project = {
   name: string
   description: string
   link: string
-  video: string
-  id: string
+  video?: string
+  id: string,
+  images?: string[],
 }
 
 type WorkExperience = {
@@ -29,14 +30,29 @@ type SocialLink = {
 
 export const PROJECTS: Project[] = [
   {
-    name: 'Mytripliner',
+    name: 'Mytripline & Mytripliner',
     description:
-      'Приложение для водителей.',
+      'Доработка сайта междугородних путешествий, приложения и сайта для водителей, сайта диспатчинга.',
     link: 'https://pro.motion-primitives.com/',
     video:
       '/test.mp4',
     id: 'project1',
+    images: [
+      '/img/Screenshot_3.png',
+      '/img/Screenshot_1.png',
+    ]
   },
+  // {
+  //   name: 'Mytripline',
+  //   description:
+  //     'Доработка сайта междугородних путешествий, админ-панели.',
+  //   link: 'https://pro.motion-primitives.com/',
+  //   id: 'project12',
+  //   images: [
+  //     'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Cat_poster_1.jpg/1920px-Cat_poster_1.jpg',
+  //     'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Cat_poster_1.jpg/1920px-Cat_poster_1.jpg',
+  //   ]
+  // },
   // {
   //   name: 'Motion Primitives',
   //   description: 'UI kit to make beautiful, animated interfaces.',

@@ -4,6 +4,13 @@ import { XIcon } from 'lucide-react'
 import { Spotlight } from '@/components/ui/spotlight'
 import { Magnetic } from '@/components/ui/magnetic'
 import {
+  Carousel,
+  CarouselContent,
+  CarouselNavigation,
+  CarouselIndicator,
+  CarouselItem,
+} from '@/components/ui/carousel';
+import {
   MorphingDialog,
   MorphingDialogTrigger,
   MorphingDialogContent,
@@ -43,7 +50,8 @@ type ProjectVideoProps = {
   src: string
 }
 
-function ProjectVideo({ src }: ProjectVideoProps) {
+function ProjectVideo({ project }) {
+  const src = project.video
   return (
     <MorphingDialog
       transition={{
@@ -53,35 +61,77 @@ function ProjectVideo({ src }: ProjectVideoProps) {
       }}
     >
       <MorphingDialogTrigger>
-        <video
-          src={src}
-          autoPlay
-          loop
-          muted
+        {
+          project.video ?
+            <video
+            src={src}
+            autoPlay
+            loop
+            muted
+            className="aspect-video w-full cursor-zoom-in rounded-xl"
+          />
+          : <img src={project.images[0]}
           className="aspect-video w-full cursor-zoom-in rounded-xl"
-        />
+          
+          />
+        }
+
       </MorphingDialogTrigger>
       <MorphingDialogContainer>
         <MorphingDialogContent>
-          <div  className="relative aspect-video rounded-2xl bg-zinc-50 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950 dark:ring-zinc-800/50">
-            <a href={src} target='_blank'>
-            <video
-                src={src}
-                autoPlay
-                loop
-                muted
-                className="aspect-video h-[50vh] w-full rounded-xl md:h-[70vh]"
-              />
-            </a>
+          <div>
+            <div className='relative max-w-screen-md w-full'>
+              <Carousel>
+                <CarouselContent >
+                  {
+                    project.video &&
+                    <CarouselItem className='p-4'>
+                    <div className="relative max-h-[50vh] aspect-video rounded-2xl bg-zinc-50 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950 dark:ring-zinc-800/50">
+                    {/* <a href={src} target='_blank'> */}
+                      <video
+                          src={src}
+                          autoPlay
+                          loop
+                          muted
+                          className="aspect-video w-full rounded-xl "
+                        />
+                      {/* </a> */}
+                    </div>
+                  </CarouselItem>
+                  }
+
+                  {
+                    project.images?.map((el, i) => 
+                      <CarouselItem key={i} className='p-4'>
+                      <div className="relative max-h-[50vh] aspect-video rounded-2xl bg-zinc-50 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950 dark:ring-zinc-800/50">
+                      {/* <a href={el} target='_blank'> */}
+                          <div
+                            style={{ backgroundImage: `url(${el})` }}
+                            className="max-h-[50vh] bg-cover aspect-video w-full rounded-xl "
+                          />
+                        {/* </a> */}
+                      </div>
+                    </CarouselItem>
+                    )
+                  }
+                </CarouselContent>
+                <CarouselNavigation alwaysShow />
+                <CarouselIndicator />
+              </Carousel>
+            </div>
           </div>
           <div className='mt-4 mx-4 bg-[var(--color-zinc-950)]'>
-            <p className='text-xs text-gray-500 mb-2'>Нажмите на видео, чтобы открыть в новой вкладке.</p>
-            <p>Приложение для водителей сервиса <a className='text-sky-500' href="https://mytripline.com" target='_blank'>https://mytripline.com</a>.</p>
+            {/* <p className='text-xs text-gray-500 mb-2'>Нажмите на видео, чтобы открыть в новой вкладке.</p> */}
+            <p>На первом слайде приложение для водителей сервиса mytripline 
+              {/* <a className='text-sky-500' href="https://mytripline.com" target='_blank'>https://mytripline.com</a> */}
+              .</p>
             <p> Скачать можно по ссылкам: <br/>
               <a href="https://play.google.com/store/apps/details?id=org.capacitor.mytripline.app" className='hover:underline text-sky-500'>Google play</a> <br/>
               <a href="https://apps.apple.com/ru/app/mytripliner/id1668656764" className='hover:underline text-sky-500'>App store</a>
             </p>
-            <p>В приложении реализованы функции выбора заказа, отслеживание местоположения</p>
+            <p>На втором слайде показана функция отслеживания водителей в реальном времени из приложения, которую я реализовал.</p>
+            <p>На третьем слайде страница входа на сайт для водителей, которую я сделал <a className='hover:underline text-sky-500' href="https://drivermytripline.com/">https://drivermytripline.com.</a></p>
+            <p>Работа над проектами идёт велась с июня 2024 года по март 2025 года.</p>
           </div>
         </MorphingDialogContent>
         <MorphingDialogClose
@@ -160,12 +210,13 @@ export default function Personal() {
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
       >
-        <h3 className="mb-5 text-lg font-medium">Портфолио</h3>
+        <h3 className="text-lg font-medium">Портфолио</h3>
+        <p className="mb-5 text-sm opacity-45">Публикую только с разрешения заказчика.</p>
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
           {PROJECTS.map((project) => (
             <div key={project.name} className="space-y-2">
               <div className="relative rounded-2xl bg-zinc-50/40 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950/40 dark:ring-zinc-800/50">
-                <ProjectVideo src={project.video} />
+                <ProjectVideo project={project} />
               </div>
               <div className="px-1">
                 {/* <a
