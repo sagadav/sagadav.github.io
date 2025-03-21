@@ -26,6 +26,9 @@ import {
   EMAIL,
   SOCIAL_LINKS,
 } from './data'
+import type {
+  Project
+} from './data'
 
 const VARIANTS_CONTAINER = {
   hidden: { opacity: 0 },
@@ -47,10 +50,10 @@ const TRANSITION_SECTION = {
 }
 
 type ProjectVideoProps = {
-  src: string
+  project: Project,
 }
 
-function ProjectVideo({ project }) {
+function ProjectVideo({ project }: ProjectVideoProps) {
   const src = project.video
   return (
     <MorphingDialog
