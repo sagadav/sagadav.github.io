@@ -81,7 +81,7 @@ function ProjectVideo({ project }: ProjectVideoProps) {
 
       </MorphingDialogTrigger>
       <MorphingDialogContainer>
-        <MorphingDialogContent>
+        <MorphingDialogContent className='max-w-screen-md'>
           <div>
             <div className='relative max-w-screen-md w-full'>
               <Carousel>
@@ -89,14 +89,14 @@ function ProjectVideo({ project }: ProjectVideoProps) {
                   {
                     project.video &&
                     <CarouselItem className='p-4'>
-                    <div className="relative max-h-[50vh] aspect-video rounded-2xl bg-zinc-50 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950 dark:ring-zinc-800/50">
+                    <div className="relative max-h-[60vh] aspect-video rounded-2xl bg-zinc-50 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950 dark:ring-zinc-800/50">
                     {/* <a href={src} target='_blank'> */}
                       <video
                           src={src}
                           autoPlay
                           loop
                           muted
-                          className="aspect-video w-full rounded-xl "
+                          className="aspect-video max-h-[60vh] w-full rounded-xl "
                         />
                       {/* </a> */}
                     </div>
@@ -118,7 +118,7 @@ function ProjectVideo({ project }: ProjectVideoProps) {
                     )
                   }
                 </CarouselContent>
-                <CarouselNavigation alwaysShow />
+                <CarouselNavigation className='w-full left-0' alwaysShow />
                 <CarouselIndicator />
               </Carousel>
             </div>
