@@ -73,7 +73,7 @@ function ProjectVideo({ project }: ProjectVideoProps) {
             muted
             className="aspect-video w-full cursor-zoom-in rounded-xl"
           />
-          : <img src={project.images[0]}
+          : <img src={project.images ? project.images[0] : ''}
           className="aspect-video w-full cursor-zoom-in rounded-xl"
           
           />
