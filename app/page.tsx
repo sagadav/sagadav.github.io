@@ -1,8 +1,8 @@
 'use client'
 import { motion } from 'motion/react'
-import { XIcon } from 'lucide-react'
-import { Spotlight } from '@/components/ui/spotlight'
+import { ArrowDownIcon, XIcon } from 'lucide-react'
 import { Magnetic } from '@/components/ui/magnetic'
+import { TextEffect } from '@/components/ui/text-effect'
 import {
   Carousel,
   CarouselContent,
@@ -17,18 +17,8 @@ import {
   MorphingDialogClose,
   MorphingDialogContainer,
 } from '@/components/ui/morphing-dialog'
-import Link from 'next/link'
-import { AnimatedBackground } from '@/components/ui/animated-background'
-import {
-  PROJECTS,
-  WORK_EXPERIENCE,
-  BLOG_POSTS,
-  EMAIL,
-  SOCIAL_LINKS,
-} from './data'
-import type {
-  Project
-} from './data'
+import { PROJECTS, SOCIAL_LINKS, STACK } from './data'
+import type { Project } from './data'
 
 const VARIANTS_CONTAINER = {
   hidden: { opacity: 0 },
@@ -46,8 +36,10 @@ const VARIANTS_SECTION = {
 }
 
 const TRANSITION_SECTION = {
-  duration: 0.3,
+  duration: 0.4,
 }
+
+const MONO = 'font-[family-name:var(--font-geist-mono)]'
 
 type ProjectVideoProps = {
   project: Project,
@@ -71,74 +63,69 @@ function ProjectVideo({ project }: ProjectVideoProps) {
             autoPlay
             loop
             muted
-            className="aspect-video w-full cursor-zoom-in rounded-xl"
+            playsInline
+            className="aspect-video w-full cursor-zoom-in rounded-xl object-cover"
           />
           : <img src={project.images ? project.images[0] : ''}
-          className="aspect-video w-full cursor-zoom-in rounded-xl"
-          
+          alt={project.name}
+          className="aspect-video w-full cursor-zoom-in rounded-xl object-cover"
           />
         }
-
       </MorphingDialogTrigger>
       <MorphingDialogContainer>
-        <MorphingDialogContent className='max-w-screen-md'>
-          <div>
-            <div className='relative max-w-screen-md w-full'>
-              <Carousel>
-                <CarouselContent >
-                  {
-                    project.video &&
-                    <CarouselItem className='p-4'>
-                    <div className="relative max-h-[60vh] aspect-video rounded-2xl bg-zinc-50 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950 dark:ring-zinc-800/50">
-                    {/* <a href={src} target='_blank'> */}
+        <MorphingDialogContent className="glass my-auto max-h-[100svh] w-full max-w-screen-md overflow-y-auto rounded-2xl pb-6">
+          <div className="relative w-full">
+            <Carousel>
+              <CarouselContent>
+                {
+                  project.video &&
+                  <CarouselItem className="p-4">
+                    <div className="relative aspect-video max-h-[60vh] rounded-2xl bg-zinc-950 p-1 ring-1 ring-white/10 ring-inset">
                       <video
-                          src={src}
-                          autoPlay
-                          loop
-                          muted
-                          className="aspect-video max-h-[60vh] w-full rounded-xl "
-                        />
-                      {/* </a> */}
+                        src={src}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="aspect-video max-h-[60vh] w-full rounded-xl"
+                      />
                     </div>
                   </CarouselItem>
-                  }
+                }
 
-                  {
-                    project.images?.map((el, i) => 
-                      <CarouselItem key={i} className='p-4'>
-                      <div className="relative max-h-[50vh] aspect-video rounded-2xl bg-zinc-50 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950 dark:ring-zinc-800/50">
-                      {/* <a href={el} target='_blank'> */}
-                          <div
-                            style={{ backgroundImage: `url(${el})` }}
-                            className="max-h-[50vh] bg-cover aspect-video w-full rounded-xl "
-                          />
-                        {/* </a> */}
+                {
+                  project.images?.map((el, i) =>
+                    <CarouselItem key={i} className="p-4">
+                      <div className="relative aspect-video max-h-[50vh] rounded-2xl bg-zinc-950 p-1 ring-1 ring-white/10 ring-inset">
+                        <div
+                          style={{ backgroundImage: `url(${el})` }}
+                          className="aspect-video max-h-[50vh] w-full rounded-xl bg-cover"
+                        />
                       </div>
                     </CarouselItem>
-                    )
-                  }
-                </CarouselContent>
-                <CarouselNavigation className='w-full left-0' alwaysShow />
-                <CarouselIndicator />
-              </Carousel>
-            </div>
+                  )
+                }
+              </CarouselContent>
+              <CarouselNavigation className="left-0 w-full" alwaysShow />
+              <CarouselIndicator />
+            </Carousel>
           </div>
-          <div className='mt-4 mx-4 bg-[var(--color-zinc-950)]'>
-            {/* <p className='text-xs text-gray-500 mb-2'>Нажмите на видео, чтобы открыть в новой вкладке.</p> */}
-            <p>На первом слайде приложение для водителей сервиса mytripline 
-              {/* <a className='text-sky-500' href="https://mytripline.com" target='_blank'>https://mytripline.com</a> */}
-              .</p>
-            <p> Скачать можно по ссылкам: <br/>
-              <a href="https://play.google.com/store/apps/details?id=org.capacitor.mytripline.app" className='hover:underline text-sky-500'>Google play</a> <br/>
-              <a href="https://apps.apple.com/ru/app/mytripliner/id1668656764" className='hover:underline text-sky-500'>App store</a>
+          <div className="mx-6 mt-6 space-y-3 text-zinc-300">
+            <h4 className="text-lg font-medium text-zinc-50">{project.name}</h4>
+            <p>На первом слайде приложение для водителей сервиса mytripline.</p>
+            <p>
+              Скачать можно по ссылкам:{' '}
+              <a href="https://play.google.com/store/apps/details?id=org.capacitor.mytripline.app" target="_blank" rel="noopener noreferrer" className="text-orange-400 hover:underline">Google Play</a>
+              {' · '}
+              <a href="https://apps.apple.com/ru/app/mytripliner/id1668656764" target="_blank" rel="noopener noreferrer" className="text-orange-400 hover:underline">App Store</a>
             </p>
             <p>На втором слайде показана функция отслеживания водителей в реальном времени из приложения, которую я реализовал.</p>
-            <p>На третьем слайде страница входа на сайт для водителей, которую я сделал <a className='hover:underline text-sky-500' href="https://drivermytripline.com/">https://drivermytripline.com.</a></p>
-            <p>Работа над проектами идёт велась с июня 2024 года по март 2025 года.</p>
+            <p>На третьем слайде страница входа на сайт для водителей, которую я сделал: <a className="text-orange-400 hover:underline" href="https://drivermytripline.com/" target="_blank" rel="noopener noreferrer">drivermytripline.com</a>.</p>
+            <p className={`${MONO} text-xs text-zinc-500`}>июнь 2024 — март 2025</p>
           </div>
         </MorphingDialogContent>
         <MorphingDialogClose
-          className="fixed top-6 right-6 h-fit w-fit rounded-full bg-white p-1"
+          className="fixed top-6 right-6 h-fit w-fit rounded-full bg-zinc-100 p-1"
           variants={{
             initial: { opacity: 0 },
             animate: {
@@ -148,194 +135,120 @@ function ProjectVideo({ project }: ProjectVideoProps) {
             exit: { opacity: 0, transition: { duration: 0 } },
           }}
         >
-          <XIcon className="h-5 w-5 text-zinc-500" />
+          <XIcon className="h-5 w-5 text-zinc-700" />
         </MorphingDialogClose>
       </MorphingDialogContainer>
     </MorphingDialog>
   )
 }
 
-function MagneticSocialLink({
+function MagneticLink({
   children,
   link,
+  external,
 }: {
   children: React.ReactNode
   link: string
+  external?: boolean
 }) {
   return (
     <Magnetic springOptions={{ bounce: 0 }} intensity={0.3}>
       <a
         href={link}
-        className="group relative inline-flex shrink-0 items-center gap-[1px] rounded-full bg-zinc-100 px-2.5 py-1 text-sm text-black transition-colors duration-200 hover:bg-zinc-950 hover:text-zinc-50 dark:bg-zinc-800 dark:text-zinc-100 dark:hover:bg-zinc-700"
+        {...(external && { target: '_blank', rel: 'noopener noreferrer' })}
+        className="glass inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-sm text-zinc-100 transition-colors duration-200 hover:border-orange-400/60 hover:text-orange-300"
       >
         {children}
-        <svg
-          width="15"
-          height="15"
-          viewBox="0 0 15 15"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-3 w-3"
-        >
-          <path
-            d="M3.64645 11.3536C3.45118 11.1583 3.45118 10.8417 3.64645 10.6465L10.2929 4L6 4C5.72386 4 5.5 3.77614 5.5 3.5C5.5 3.22386 5.72386 3 6 3L11.5 3C11.6326 3 11.7598 3.05268 11.8536 3.14645C11.9473 3.24022 12 3.36739 12 3.5L12 9.00001C12 9.27615 11.7761 9.50001 11.5 9.50001C11.2239 9.50001 11 9.27615 11 9.00001V4.70711L4.35355 11.3536C4.15829 11.5488 3.84171 11.5488 3.64645 11.3536Z"
-            fill="currentColor"
-            fillRule="evenodd"
-            clipRule="evenodd"
-          ></path>
-        </svg>
       </a>
     </Magnetic>
+  )
+}
+
+function SectionLabel({ children }: { children: React.ReactNode }) {
+  return (
+    <p className={`${MONO} mb-2 text-xs tracking-widest text-orange-400 uppercase`}>
+      {'// '}{children}
+    </p>
   )
 }
 
 export default function Personal() {
   return (
     <motion.main
-      className="space-y-24"
+      className="space-y-16"
       variants={VARIANTS_CONTAINER}
       initial="hidden"
       animate="visible"
     >
-      {/* <motion.section
-        variants={VARIANTS_SECTION}
-        transition={TRANSITION_SECTION}
-      >
-        <div className="flex-1">
-          <p className="text-zinc-600 dark:text-zinc-400">
-            Focused on creating intuitive and performant web experiences.
-            Bridging the gap between design and development.
-          </p>
-        </div>
-      </motion.section> */}
-
       <motion.section
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
+        className="flex min-h-[72svh] flex-col justify-center pt-12 pb-8"
       >
-        <h3 className="text-lg font-medium">Портфолио</h3>
-        <p className="mb-5 text-sm opacity-45">Публикую только с разрешения заказчика.</p>
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-          {PROJECTS.map((project) => (
-            <div key={project.name} className="space-y-2">
-              <div className="relative rounded-2xl bg-zinc-50/40 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950/40 dark:ring-zinc-800/50">
-                <ProjectVideo project={project} />
-              </div>
-              <div className="px-1">
-                {/* <a
-                  className="font-base group relative inline-block font-[450] text-zinc-900 dark:text-zinc-50"
-                  href={project.link}
-                  target="_blank"
-                >
-                  {project.name}
-                  <span className="absolute bottom-0.5 left-0 block h-[1px] w-full max-w-0 bg-zinc-900 transition-all duration-200 group-hover:max-w-full"></span>
-                </a> */}
-                <p
-                  className="font-base group relative inline-block font-[450] text-zinc-900 dark:text-zinc-50"
-                >
-                  {project.name}
-                </p>
-                <p className="text-base text-zinc-600 dark:text-zinc-400">
-                  {project.description}
-                </p>
-              </div>
-            </div>
+        <SectionLabel>fullstack-developer</SectionLabel>
+        <h1 className="text-5xl font-semibold tracking-tighter text-zinc-50 sm:text-7xl">
+          Сагадеев<br />Артур
+        </h1>
+        <TextEffect
+          as="p"
+          preset="fade"
+          per="word"
+          delay={0.4}
+          className="mt-6 max-w-md text-lg text-zinc-300"
+        >
+          Имею опыт работы с Laravel, Django на бэкенде. Vue, React на фронтенде.
+        </TextEffect>
+        <ul className={`${MONO} mt-6 flex flex-wrap gap-2 text-xs`}>
+          {STACK.map((tech) => (
+            <li key={tech} className="glass rounded-md px-2.5 py-1 text-zinc-300">
+              {tech}
+            </li>
+          ))}
+        </ul>
+        <div className="mt-10 flex flex-wrap items-center gap-3">
+          <MagneticLink link="#portfolio">
+            Портфолио <ArrowDownIcon className="h-4 w-4" />
+          </MagneticLink>
+          {SOCIAL_LINKS.map((link) => (
+            <MagneticLink key={link.label} link={link.link} external>
+              {link.label} <span aria-hidden="true">↗</span>
+            </MagneticLink>
           ))}
         </div>
       </motion.section>
 
-      {/* <motion.section
+      <motion.section
+        id="portfolio"
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
+        className="glass scroll-mt-8 rounded-3xl p-5 sm:p-8"
       >
-        <h3 className="mb-5 text-lg font-medium">Work Experience</h3>
-        <div className="flex flex-col space-y-2">
-          {WORK_EXPERIENCE.map((job) => (
-            <a
-              className="relative overflow-hidden rounded-2xl bg-zinc-300/30 p-[1px] dark:bg-zinc-600/30"
-              href={job.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              key={job.id}
-            >
-              <Spotlight
-                className="from-zinc-900 via-zinc-800 to-zinc-700 blur-2xl dark:from-zinc-100 dark:via-zinc-200 dark:to-zinc-50"
-                size={64}
-              />
-              <div className="relative h-full w-full rounded-[15px] bg-white p-4 dark:bg-zinc-950">
-                <div className="relative flex w-full flex-row justify-between">
-                  <div>
-                    <h4 className="font-normal dark:text-zinc-100">
-                      {job.title}
-                    </h4>
-                    <p className="text-zinc-500 dark:text-zinc-400">
-                      {job.company}
-                    </p>
-                  </div>
-                  <p className="text-zinc-600 dark:text-zinc-400">
-                    {job.start} - {job.end}
-                  </p>
-                </div>
+        <SectionLabel>портфолио</SectionLabel>
+        <h2 className="text-2xl font-medium text-zinc-50">Проекты</h2>
+        <p className="mt-1 mb-6 text-sm text-zinc-500">Публикую только с разрешения заказчика.</p>
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+          {PROJECTS.map((project) => (
+            <article key={project.id} className="group space-y-3">
+              <div className="relative rounded-2xl bg-zinc-950/60 p-1 ring-1 ring-white/10 transition duration-300 ring-inset group-hover:shadow-[0_0_40px_-10px_rgba(243,128,32,0.45)] group-hover:ring-orange-400/40">
+                <ProjectVideo project={project} />
               </div>
-            </a>
+              <div className="px-1">
+                <h3 className="font-medium text-zinc-50">{project.name}</h3>
+                <p className="mt-1 text-zinc-400">{project.description}</p>
+                {project.tags && (
+                  <ul className={`${MONO} mt-3 flex flex-wrap gap-1.5 text-[11px] text-zinc-400`}>
+                    {project.tags.map((tag) => (
+                      <li key={tag} className="rounded border border-white/10 px-1.5 py-0.5">
+                        {tag}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </article>
           ))}
         </div>
-      </motion.section> */}
-
-      {/* <motion.section
-        variants={VARIANTS_SECTION}
-        transition={TRANSITION_SECTION}
-      >
-        <h3 className="mb-3 text-lg font-medium">Blog</h3>
-        <div className="flex flex-col space-y-0">
-          <AnimatedBackground
-            enableHover
-            className="h-full w-full rounded-lg bg-zinc-100 dark:bg-zinc-900/80"
-            transition={{
-              type: 'spring',
-              bounce: 0,
-              duration: 0.2,
-            }}
-          >
-            {BLOG_POSTS.map((post) => (
-              <Link
-                key={post.uid}
-                className="-mx-3 rounded-xl px-3 py-3"
-                href={post.link}
-                data-id={post.uid}
-              >
-                <div className="flex flex-col space-y-1">
-                  <h4 className="font-normal dark:text-zinc-100">
-                    {post.title}
-                  </h4>
-                  <p className="text-zinc-500 dark:text-zinc-400">
-                    {post.description}
-                  </p>
-                </div>
-              </Link>
-            ))}
-          </AnimatedBackground>
-        </div>
-      </motion.section> */}
-      {/* <motion.section
-        variants={VARIANTS_SECTION}
-        transition={TRANSITION_SECTION}
-      >
-        <h3 className="mb-5 text-lg font-medium">Контакты</h3>
-        <p className="mb-5 text-zinc-600 dark:text-zinc-400">
-          Feel free to contact me at{' '}
-          <a className="underline dark:text-zinc-300" href={`mailto:${EMAIL}`}>
-            {EMAIL}
-          </a>
-        </p>
-        <div className="flex items-center justify-start space-x-3">
-          {SOCIAL_LINKS.map((link) => (
-            <MagneticSocialLink key={link.label} link={link.link}>
-              {link.label}
-            </MagneticSocialLink>
-          ))}
-        </div>
-      </motion.section> */}
+      </motion.section>
     </motion.main>
   )
 }

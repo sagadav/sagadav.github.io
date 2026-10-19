@@ -20,6 +20,17 @@
   }
 }
 
+@utility glass {
+  background-color: rgb(14 14 15 / 0.62);
+  backdrop-filter: blur(14px) saturate(1.2);
+  -webkit-backdrop-filter: blur(14px) saturate(1.2);
+  border: 1px solid rgb(255 255 255 / 0.08);
+}
+
+::selection {
+  background: rgb(243 128 32 / 0.35);
+}
+
 a {
   outline: none !important;
 }

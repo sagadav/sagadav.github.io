@@ -1,103 +1,43 @@
-'use client'
-import { AnimatedBackground } from '@/components/ui/animated-background'
-import { TextLoop } from '@/components/ui/text-loop'
-import { MonitorIcon, MoonIcon, SunIcon } from 'lucide-react'
-import { useTheme } from 'next-themes'
 import Script from 'next/script'
-import { useEffect, useState } from 'react'
-
-const THEMES_OPTIONS = [
-  {
-    label: 'Light',
-    id: 'light',
-    icon: <SunIcon className="h-4 w-4" />,
-  },
-  {
-    label: 'Dark',
-    id: 'dark',
-    icon: <MoonIcon className="h-4 w-4" />,
-  },
-  {
-    label: 'System',
-    id: 'system',
-    icon: <MonitorIcon className="h-4 w-4" />,
-  },
-]
-
-function ThemeSwitch() {
-  const [mounted, setMounted] = useState(false)
-  const { theme, setTheme } = useTheme()
-
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-
-  if (!mounted) {
-    return null
-  }
-
-  return (
-    <AnimatedBackground
-      className="pointer-events-none rounded-lg bg-zinc-100 dark:bg-zinc-800"
-      defaultValue={theme}
-      transition={{
-        type: 'spring',
-        bounce: 0,
-        duration: 0.2,
-      }}
-      enableHover={false}
-      onValueChange={(id) => {
-        setTheme(id as string)
-      }}
-    >
-      {THEMES_OPTIONS.map((theme) => {
-        return (
-          <button
-            key={theme.id}
-            className="inline-flex h-7 w-7 items-center justify-center text-zinc-500 transition-colors duration-100 focus-visible:outline-2 data-[checked=true]:text-zinc-950 dark:text-zinc-400 dark:data-[checked=true]:text-zinc-50"
-            type="button"
-            aria-label={`Switch to ${theme.label} theme`}
-            data-id={theme.id}
-          >
-            {theme.icon}
-          </button>
-        )
-      })}
-    </AnimatedBackground>
-  )
-}
 
 export function Footer() {
   return (
-    <footer className="mt-24 border-t border-zinc-100 px-0 py-4 dark:border-zinc-800">
+    <footer className="mt-16 border-t border-white/10 py-6 font-[family-name:var(--font-geist-mono)] text-xs text-zinc-500">
       <div className="flex items-center justify-between">
-        <a href="https://github.com/sagadav" target="_blank">
-           <span className="text-xs text-zinc-500">© 2025 Sag.</span>
+        <a
+          href="https://github.com/sagadav"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="transition-colors hover:text-orange-400"
+        >
+          © {new Date().getFullYear()} sagadav
         </a>
-        <div className="text-xs text-zinc-400">
-          {/* <ThemeSwitch /> */}
-        </div>
+        <span aria-hidden="true">· • ● • ·</span>
       </div>
       <Script strategy="afterInteractive" id="yandex-metrika">
         {`
-          <!-- Yandex.Metrika counter -->
-          <script type="text/javascript" >
-            (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-            m[i].l=1*new Date();
-            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-            (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+          (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+          m[i].l=1*new Date();
+          for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+          k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+          (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
 
-            ym(100384418, "init", {
-                  clickmap:true,
-                  trackLinks:true,
-                  accurateTrackBounce:true
-            });
-          </script>
-          <noscript><div><img src="https://mc.yandex.ru/watch/100384418" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-          <!-- /Yandex.Metrika counter -->
+          ym(100384418, "init", {
+                clickmap:true,
+                trackLinks:true,
+                accurateTrackBounce:true
+          });
         `}
       </Script>
+      <noscript>
+        <div>
+          <img
+            src="https://mc.yandex.ru/watch/100384418"
+            style={{ position: 'absolute', left: '-9999px' }}
+            alt=""
+          />
+        </div>
+      </noscript>
     </footer>
   )
 }
