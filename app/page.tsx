@@ -3,6 +3,7 @@ import { motion } from 'motion/react'
 import { ArrowDownIcon, XIcon } from 'lucide-react'
 import { Magnetic } from '@/components/ui/magnetic'
 import { TextEffect } from '@/components/ui/text-effect'
+import { AsciiLightning } from '@/components/ui/ascii-lightning'
 import {
   Carousel,
   CarouselContent,
@@ -115,12 +116,12 @@ function ProjectVideo({ project }: ProjectVideoProps) {
             <p>На первом слайде приложение для водителей сервиса mytripline.</p>
             <p>
               Скачать можно по ссылкам:{' '}
-              <a href="https://play.google.com/store/apps/details?id=org.capacitor.mytripline.app" target="_blank" rel="noopener noreferrer" className="text-orange-400 hover:underline">Google Play</a>
+              <a href="https://play.google.com/store/apps/details?id=org.capacitor.mytripline.app" target="_blank" rel="noopener noreferrer" className="text-sky-300 hover:underline">Google Play</a>
               {' · '}
-              <a href="https://apps.apple.com/ru/app/mytripliner/id1668656764" target="_blank" rel="noopener noreferrer" className="text-orange-400 hover:underline">App Store</a>
+              <a href="https://apps.apple.com/ru/app/mytripliner/id1668656764" target="_blank" rel="noopener noreferrer" className="text-sky-300 hover:underline">App Store</a>
             </p>
             <p>На втором слайде показана функция отслеживания водителей в реальном времени из приложения, которую я реализовал.</p>
-            <p>На третьем слайде страница входа на сайт для водителей, которую я сделал: <a className="text-orange-400 hover:underline" href="https://drivermytripline.com/" target="_blank" rel="noopener noreferrer">drivermytripline.com</a>.</p>
+            <p>На третьем слайде страница входа на сайт для водителей, которую я сделал: <a className="text-sky-300 hover:underline" href="https://drivermytripline.com/" target="_blank" rel="noopener noreferrer">drivermytripline.com</a>.</p>
             <p className={`${MONO} text-xs text-zinc-500`}>июнь 2024 — март 2025</p>
           </div>
         </MorphingDialogContent>
@@ -156,7 +157,7 @@ function MagneticLink({
       <a
         href={link}
         {...(external && { target: '_blank', rel: 'noopener noreferrer' })}
-        className="glass inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-sm text-zinc-100 transition-colors duration-200 hover:border-orange-400/60 hover:text-orange-300"
+        className="glass inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-sm text-zinc-100 transition-colors duration-200 hover:border-sky-300/60 hover:text-sky-200"
       >
         {children}
       </a>
@@ -166,7 +167,7 @@ function MagneticLink({
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
-    <p className={`${MONO} mb-2 text-xs tracking-widest text-orange-400 uppercase`}>
+    <p className={`${MONO} mb-2 text-xs tracking-widest text-sky-300 uppercase`}>
       {'// '}{children}
     </p>
   )
@@ -183,10 +184,13 @@ export default function Personal() {
       <motion.section
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
-        className="flex min-h-[72svh] flex-col justify-center pt-12 pb-8"
+        className="relative flex min-h-[72svh] flex-col justify-center pt-12 pb-8"
       >
+        <div className="pointer-events-none absolute -top-24 bottom-0 right-[calc(50%-50vw)] left-[55%] opacity-50 [mask-image:linear-gradient(to_right,transparent,black_30%)] sm:left-[45%] sm:opacity-100">
+          <AsciiLightning />
+        </div>
         <SectionLabel>fullstack-developer</SectionLabel>
-        <h1 className="text-5xl font-semibold tracking-tighter text-zinc-50 sm:text-7xl">
+        <h1 className="relative text-5xl font-semibold tracking-tighter text-zinc-50 sm:text-7xl">
           Сагадеев<br />Артур
         </h1>
         <TextEffect
@@ -194,18 +198,18 @@ export default function Personal() {
           preset="fade"
           per="word"
           delay={0.4}
-          className="mt-6 max-w-md text-lg text-zinc-300"
+          className="relative mt-6 max-w-md text-lg text-zinc-300"
         >
           Имею опыт работы с Laravel, Django на бэкенде. Vue, React на фронтенде.
         </TextEffect>
-        <ul className={`${MONO} mt-6 flex flex-wrap gap-2 text-xs`}>
+        <ul className={`${MONO} relative mt-6 flex flex-wrap gap-2 text-xs`}>
           {STACK.map((tech) => (
             <li key={tech} className="glass rounded-md px-2.5 py-1 text-zinc-300">
               {tech}
             </li>
           ))}
         </ul>
-        <div className="mt-10 flex flex-wrap items-center gap-3">
+        <div className="relative mt-10 flex flex-wrap items-center gap-3">
           <MagneticLink link="#portfolio">
             Портфолио <ArrowDownIcon className="h-4 w-4" />
           </MagneticLink>
@@ -229,7 +233,7 @@ export default function Personal() {
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
           {PROJECTS.map((project) => (
             <article key={project.id} className="group space-y-3">
-              <div className="relative rounded-2xl bg-zinc-950/60 p-1 ring-1 ring-white/10 transition duration-300 ring-inset group-hover:shadow-[0_0_40px_-10px_rgba(243,128,32,0.45)] group-hover:ring-orange-400/40">
+              <div className="relative rounded-2xl bg-zinc-950/60 p-1 ring-1 ring-white/10 transition duration-300 ring-inset group-hover:shadow-[0_0_40px_-10px_rgba(120,180,255,0.4)] group-hover:ring-sky-300/40">
                 <ProjectVideo project={project} />
               </div>
               <div className="px-1">

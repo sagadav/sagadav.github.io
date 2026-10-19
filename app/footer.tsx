@@ -8,7 +8,7 @@ export function Footer() {
           href="https://github.com/sagadav"
           target="_blank"
           rel="noopener noreferrer"
-          className="transition-colors hover:text-orange-400"
+          className="transition-colors hover:text-sky-300"
         >
           © {new Date().getFullYear()} sagadav
         </a>
