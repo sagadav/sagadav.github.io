@@ -1,6 +1,8 @@
 'use client'
 import { motion } from 'motion/react'
-import { ArrowDownIcon, XIcon } from 'lucide-react'
+import { ArrowDownIcon, ArrowUpRightIcon, XIcon } from 'lucide-react'
+import Link from 'next/link'
+import { AnimatedBackground } from '@/components/ui/animated-background'
 import { Magnetic } from '@/components/ui/magnetic'
 import { TextEffect } from '@/components/ui/text-effect'
 import { AsciiLightning } from '@/components/ui/ascii-lightning'
@@ -18,7 +20,7 @@ import {
   MorphingDialogClose,
   MorphingDialogContainer,
 } from '@/components/ui/morphing-dialog'
-import { PROJECTS, SOCIAL_LINKS, STACK } from './data'
+import { BLOG_POSTS, PROJECTS, SOCIAL_LINKS, STACK } from './data'
 import type { Project } from './data'
 
 const VARIANTS_CONTAINER = {
@@ -253,6 +255,51 @@ export default function Personal() {
           ))}
         </div>
       </motion.section>
+
+      {BLOG_POSTS.length > 0 && (
+        <motion.section
+          id="blog"
+          variants={VARIANTS_SECTION}
+          transition={TRANSITION_SECTION}
+          className="glass scroll-mt-8 rounded-3xl p-5 sm:p-8"
+        >
+          <SectionLabel>статьи</SectionLabel>
+          <h2 className="mb-4 text-2xl font-medium text-zinc-50">Пишу о разработке</h2>
+          <div className="flex flex-col">
+            <AnimatedBackground
+              enableHover
+              className="h-full w-full rounded-xl bg-white/[0.04] ring-1 ring-white/10"
+              transition={{
+                type: 'spring',
+                bounce: 0,
+                duration: 0.2,
+              }}
+            >
+              {BLOG_POSTS.map((post) => (
+                <Link
+                  key={post.uid}
+                  href={post.link}
+                  data-id={post.uid}
+                  className="group -mx-3 rounded-xl px-3 py-4"
+                >
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="space-y-1">
+                      <h3 className="font-medium text-zinc-50 transition-colors group-hover:text-sky-200">
+                        {post.title}
+                      </h3>
+                      <p className="text-zinc-400">{post.description}</p>
+                      <p className={`${MONO} pt-1 text-[11px] text-zinc-500`}>
+                        {post.date} · {post.readingTime}
+                      </p>
+                    </div>
+                    <ArrowUpRightIcon className="mt-1 h-4 w-4 shrink-0 text-zinc-500 transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-sky-300" />
+                  </div>
+                </Link>
+              ))}
+            </AnimatedBackground>
+          </div>
+        </motion.section>
+      )}
     </motion.main>
   )
 }

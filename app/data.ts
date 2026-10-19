@@ -8,6 +8,15 @@ export type Project = {
   tags?: string[],
 }
 
+export type BlogPost = {
+  title: string
+  description: string
+  link: string
+  uid: string
+  date: string
+  readingTime: string
+}
+
 type SocialLink = {
   label: string
   link: string
@@ -29,6 +38,18 @@ export const PROJECTS: Project[] = [
       '/img/Screenshot_1.png',
     ],
     tags: ['Мобильное приложение', 'Веб', '2024–2025'],
+  },
+]
+
+export const BLOG_POSTS: BlogPost[] = [
+  {
+    title: 'ASCII-молния на canvas без библиотек',
+    description:
+      'Как устроена гроза на главной: дизеринг точками, генерация разряда и таймлайн вспышки.',
+    link: '/blog/ascii-lightning',
+    uid: 'ascii-lightning',
+    date: '19 октября 2026',
+    readingTime: '5 мин',
   },
 ]
 

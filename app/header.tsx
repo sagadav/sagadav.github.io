@@ -11,6 +11,9 @@ export function Header() {
         <span className="text-sky-300">~/</span>sagadav
       </Link>
       <nav className="flex items-center gap-4 text-zinc-400">
+        <Link href="/#blog" className="transition-colors hover:text-sky-300">
+          статьи
+        </Link>
         {SOCIAL_LINKS.map((link) => (
           <a
             key={link.label}
