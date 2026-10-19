@@ -4,7 +4,6 @@ import { ArrowDownIcon, ArrowUpRightIcon, XIcon } from 'lucide-react'
 import Link from 'next/link'
 import { AnimatedBackground } from '@/components/ui/animated-background'
 import { Magnetic } from '@/components/ui/magnetic'
-import { TextEffect } from '@/components/ui/text-effect'
 import { AsciiLightning } from '@/components/ui/ascii-lightning'
 import {
   Carousel,
@@ -195,16 +194,7 @@ export default function Personal() {
         <h1 className="relative text-5xl font-semibold tracking-tighter text-zinc-50 sm:text-7xl">
           Сагадеев<br />Артур
         </h1>
-        <TextEffect
-          as="p"
-          preset="fade"
-          per="word"
-          delay={0.4}
-          className="relative mt-6 max-w-md text-lg text-zinc-300"
-        >
-          Имею опыт работы с Laravel, Django на бэкенде. Vue, React на фронтенде.
-        </TextEffect>
-        <ul className={`${MONO} relative mt-6 flex flex-wrap gap-2 text-xs`}>
+        <ul className={`${MONO} relative mt-8 flex flex-wrap gap-2 text-xs`}>
           {STACK.map((tech) => (
             <li key={tech} className="glass rounded-md px-2.5 py-1 text-zinc-300">
               {tech}
@@ -230,8 +220,7 @@ export default function Personal() {
         className="glass scroll-mt-8 rounded-3xl p-5 sm:p-8"
       >
         <SectionLabel>портфолио</SectionLabel>
-        <h2 className="text-2xl font-medium text-zinc-50">Проекты</h2>
-        <p className="mt-1 mb-6 text-sm text-zinc-500">Публикую только с разрешения заказчика.</p>
+        <h2 className="mb-6 text-2xl font-medium text-zinc-50">Проекты</h2>
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
           {PROJECTS.map((project) => (
             <article key={project.id} className="group space-y-3">

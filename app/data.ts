@@ -22,7 +22,7 @@ type SocialLink = {
   link: string
 }
 
-export const STACK = ['Laravel', 'Django', 'Vue', 'React']
+export const STACK = ['Laravel', 'Symfony', 'Vue', 'Quasar', 'React', 'React Native']
 
 export const PROJECTS: Project[] = [
   {
@@ -57,5 +57,9 @@ export const SOCIAL_LINKS: SocialLink[] = [
   {
     label: 'Github',
     link: 'https://github.com/sagadav',
+  },
+  {
+    label: 'Telegram',
+    link: 'https://t.me/artursagadav',
   },
 ]

@@ -14,7 +14,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: 'Сагадеев Артур — fullstack-разработчик',
   description:
-    'Fullstack-разработчик: Laravel, Django на бэкенде, Vue, React на фронтенде.',
+    'Fullstack-разработчик: Laravel, Symfony на бэкенде, Vue, Quasar, React на фронтенде, React Native для мобильных приложений.',
 }
 
 const geist = Onest({
