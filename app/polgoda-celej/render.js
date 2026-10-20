@@ -159,7 +159,7 @@ export function renderDashboard(root, d3, DATA) {
   }
 
   function heat(box, rows) {
-    const areas = [['s_money', 'Деньги'], ['s_health', 'Здоровье'], ['s_social', 'Связи']]
+    const areas = [['s_money', 'Деньги'], ['s_health', 'Здоровье'], ['s_social', 'Связи'], ['s_fame', 'Популярность']]
     const W = Math.max(240, box.clientWidth), rh = 20, gap = 3, H = areas.length * (rh + gap) + 20
     const svg = d3.select(box).append('svg').attr('width', '100%').attr('height', H).attr('viewBox', `0 0 ${W} ${H}`)
     const ml = Math.ceil(textW(svg, 'tick', areas.map((a) => a[1]))) + 10

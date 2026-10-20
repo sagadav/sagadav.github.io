@@ -275,6 +275,19 @@
       "s_money": 1,
       "s_health": 1,
       "s_social": 2
+    },
+    {
+      "id": "w24",
+      "label": "12–18 окт",
+      "start": "2026-10-12",
+      "days": 7,
+      "trainings": 2,
+      "calories_days": null,
+      "talks": 7,
+      "s_money": 1,
+      "s_health": 2,
+      "s_social": 2,
+      "s_fame": 1
     }
   ],
   "lifts": [
@@ -381,6 +394,22 @@
       "weight": 65,
       "reps": null,
       "kind": "рабочий"
+    },
+    {
+      "id": "l14",
+      "date": "2026-10-18",
+      "lift": "Жим",
+      "weight": 70,
+      "reps": "5–6",
+      "kind": "рабочий"
+    },
+    {
+      "id": "l15",
+      "date": "2026-10-18",
+      "lift": "Жим",
+      "weight": 72.5,
+      "reps": "5",
+      "kind": "подход"
     }
   ],
   "contacts": [
@@ -683,6 +712,56 @@
       "count": 1,
       "note": "Давно не виделись",
       "week_label": "5–11 окт"
+    },
+    {
+      "id": "c31",
+      "week": "w24",
+      "channel": "Random Coffee и айтишники",
+      "who": "Чел с Random Coffee",
+      "format": "онлайн",
+      "count": 1,
+      "note": "Random Coffee",
+      "week_label": "12–18 окт"
+    },
+    {
+      "id": "c32",
+      "week": "w24",
+      "channel": "Random Coffee и айтишники",
+      "who": "Трое с митапа",
+      "format": "онлайн",
+      "count": 3,
+      "note": "Созвон-митап, взял контакты, но особо ничего полезного",
+      "week_label": "12–18 окт"
+    },
+    {
+      "id": "c33",
+      "week": "w24",
+      "channel": "Друзья и семья",
+      "who": "Димас",
+      "format": "вживую",
+      "count": 1,
+      "note": "Виделись",
+      "week_label": "12–18 окт"
+    },
+    {
+      "id": "c34",
+      "week": "w24",
+      "channel": "Друзья и семья",
+      "who": "Тимур",
+      "format": "вживую",
+      "count": 1,
+      "note": "Виделись",
+      "week_label": "12–18 окт"
+    },
+    {
+      "id": "c35",
+      "week": "w24",
+      "channel": "Друзья и семья",
+      "who": "Друзья Мо",
+      "format": "вживую",
+      "count": 1,
+      "note": "Ходили на заброшку в пятницу",
+      "week_label": "12–18 окт"
     }
   ]
 }

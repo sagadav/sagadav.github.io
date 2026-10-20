@@ -66,8 +66,8 @@ export function Dashboard() {
         <p className={`${MONO} mb-2 text-xs tracking-widest text-sky-300 uppercase`}>{'// '}цели</p>
         <h1 className="text-4xl font-semibold tracking-tighter text-zinc-50 sm:text-5xl">Полгода целей</h1>
         <p className="mt-3 max-w-xl text-zinc-400">
-          Апрель — октябрь 2026 по недельным отчётам. В зал хожу стабильно, связи пошли вверх с сентября, а жим и
-          подсчёт калорий стоят на месте.
+          Апрель — октябрь 2026 по недельным отчётам. В зал хожу стабильно, связи пошли вверх с сентября, жим в
+          октябре сдвинулся с плато, а подсчёт калорий стоит на месте.
         </p>
       </header>
 
@@ -78,7 +78,7 @@ export function Dashboard() {
         <Tile label="Лучший присед" sub="сейчас рабочий меньше">
           <span data-field="best_squat">—</span> кг
         </Tile>
-        <Tile label="Лучший жим" sub="на раз, в мае; дальше плато">
+        <Tile label="Лучший жим" sub="на раз, в мае; в октябре 72,5 на 5">
           <span data-field="best_bench">—</span> кг
         </Tile>
         <Tile
