@@ -53,6 +53,9 @@ export const BLOG_POSTS: BlogPost[] = [
   },
 ]
 
+// newest first
+export const VIDEO_NOTES: string[] = ['/krugi/1.mp4']
+
 export const SOCIAL_LINKS: SocialLink[] = [
   {
     label: 'Github',
