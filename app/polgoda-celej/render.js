@@ -159,32 +159,47 @@ export function renderDashboard(root, d3, DATA) {
   }
 
   function heat(box, rows) {
-    const areas = [['s_money', 'Деньги'], ['s_health', 'Здоровье'], ['s_social', 'Связи'], ['s_fame', 'Популярность']]
-    const W = Math.max(240, box.clientWidth), rh = 20, gap = 3, H = areas.length * (rh + gap) + 20
-    const svg = d3.select(box).append('svg').attr('width', '100%').attr('height', H).attr('viewBox', `0 0 ${W} ${H}`)
-    const ml = Math.ceil(textW(svg, 'tick', areas.map((a) => a[1]))) + 10
-    const x = d3.scaleBand(rows.map((r, i) => i), [ml, W]).paddingInner(0.12)
+    const areas = [['s_money', 'Деньги', 'Деньги'], ['s_health', 'Здоровье', 'Здоровье'], ['s_social', 'Связи', 'Связи'], ['s_fame', 'Популярность', 'Попул.']]
+    const W = Math.max(240, box.clientWidth)
     const fill = (v) => (v === 2 || v === 1 ? C[0] : v === 0 ? 'var(--chart-grid)' : 'transparent')
-    areas.forEach(([k, name], ai) => {
-      const yy = ai * (rh + gap)
-      svg.append('text').attr('class', 'tick').attr('x', 0).attr('y', yy + rh / 2).attr('dy', '0.32em').text(name)
-      rows.forEach((r, i) => {
-        const v = num(r[k])
-        svg.append('rect').attr('x', x(i)).attr('y', yy).attr('width', x.bandwidth()).attr('height', rh).attr('rx', 3)
-          .style('fill', fill(v)).attr('fill-opacity', v === 1 ? 0.38 : 1)
-          .style('stroke', v === null ? 'var(--chart-muted)' : 'none').attr('stroke-dasharray', v === null ? '2 2' : null)
-          .attr('class', 'cell').datum({ r, name, v })
+    const cell = (svg, x, y, w, h, r, name, v) =>
+      svg.append('rect').attr('x', x).attr('y', y).attr('width', w).attr('height', h).attr('rx', 3)
+        .style('fill', fill(v)).attr('fill-opacity', v === 1 ? 0.38 : 1)
+        .style('stroke', v === null ? 'var(--chart-muted)' : 'none').attr('stroke-dasharray', v === null ? '2 2' : null)
+        .attr('class', 'cell').datum({ r, name, v })
+    let svg
+    if (W < 480) {
+      // phones: weeks run down the page and areas become columns, so cells keep a usable size
+      const rh = 14, gap = 4, top = 22, H = top + rows.length * (rh + gap)
+      svg = d3.select(box).append('svg').attr('width', '100%').attr('height', H).attr('viewBox', `0 0 ${W} ${H}`)
+      const dates = rows.map((r) => dshort(parse(r.start)))
+      const ml = Math.ceil(textW(svg, 'tick', dates)) + 10
+      const x = d3.scaleBand(areas.map((a, i) => i), [ml, W]).paddingInner(0.12)
+      areas.forEach(([k, name, short], ai) => {
+        svg.append('text').attr('class', 'tick').attr('text-anchor', 'middle').attr('x', x(ai) + x.bandwidth() / 2).attr('y', 12).text(short)
+        rows.forEach((r, i) => cell(svg, x(ai), top + i * (rh + gap), x.bandwidth(), rh, r, name, num(r[k])))
       })
-    })
-    let lastM = -1, lastX = -999
-    rows.forEach((r, i) => {
-      const m = parse(r.start).getUTCMonth()
-      if (m !== lastM && x(i) - lastX > 28) {
-        svg.append('text').attr('class', 'tick').attr('x', x(i)).attr('y', H - 4).text(MS[m])
-        lastX = x(i)
-      }
-      lastM = m
-    })
+      rows.forEach((r, i) => svg.append('text').attr('class', 'tick').attr('x', 0).attr('y', top + i * (rh + gap) + rh / 2).attr('dy', '0.32em').text(dates[i]))
+    } else {
+      const rh = 20, gap = 3, H = areas.length * (rh + gap) + 20
+      svg = d3.select(box).append('svg').attr('width', '100%').attr('height', H).attr('viewBox', `0 0 ${W} ${H}`)
+      const ml = Math.ceil(textW(svg, 'tick', areas.map((a) => a[1]))) + 10
+      const x = d3.scaleBand(rows.map((r, i) => i), [ml, W]).paddingInner(0.12)
+      areas.forEach(([k, name], ai) => {
+        const yy = ai * (rh + gap)
+        svg.append('text').attr('class', 'tick').attr('x', 0).attr('y', yy + rh / 2).attr('dy', '0.32em').text(name)
+        rows.forEach((r, i) => cell(svg, x(i), yy, x.bandwidth(), rh, r, name, num(r[k])))
+      })
+      let lastM = -1, lastX = -999
+      rows.forEach((r, i) => {
+        const m = parse(r.start).getUTCMonth()
+        if (m !== lastM && x(i) - lastX > 28) {
+          svg.append('text').attr('class', 'tick').attr('x', x(i)).attr('y', H - 4).text(MS[m])
+          lastX = x(i)
+        }
+        lastM = m
+      })
+    }
     const t = tip(box)
     const word = (v) => (v === 2 ? 'заметный результат' : v === 1 ? 'что-то сделано' : v === 0 ? 'пусто' : 'нет записи')
     svg.selectAll('.cell').on('mousemove', function (ev, d) {
