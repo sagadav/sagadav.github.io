@@ -187,7 +187,7 @@ export default function Personal() {
         transition={TRANSITION_SECTION}
         className="relative flex min-h-[72svh] flex-col justify-center pt-12 pb-8"
       >
-        <div className="pointer-events-none absolute -top-24 bottom-0 right-[calc(50%-50vw)] left-[55%] opacity-50 [mask-image:linear-gradient(to_right,transparent,black_30%)] sm:left-[45%] sm:opacity-100">
+        <div className="pointer-events-none absolute -top-24 bottom-0 right-[calc(50%-50vw)] left-[55%] opacity-90 [mask-image:linear-gradient(to_right,transparent,black_30%)] sm:left-[45%] sm:opacity-100">
           <AsciiLightning />
         </div>
         <SectionLabel>fullstack-developer</SectionLabel>

@@ -6,6 +6,10 @@ import { useEffect, useRef } from 'react'
 // (ordered 4x4 Bayer dithering), charge picks the hue from storm grey to electric.
 
 const CELL = 9
+// on a narrow canvas (phones) the dots keep their size but sit further apart, so the
+// bolt reads as scattered sparks instead of a solid smear
+const SPARSE_WIDTH = 480
+const SPARSE_CELL = 13
 const FPS = 24
 // dot radii as a share of the cell, drawn as circles so they don't depend on the OS font
 const DOTS = [0.13, 0.26, 0.42]
@@ -93,8 +97,10 @@ function fbm(x: number, y: number) {
 }
 
 // Pre-rendered dots for every (size, level, charge), so a frame is just drawImage calls.
-function buildAtlas(dpr: number) {
-  const size = CELL * dpr
+function buildAtlas(dpr: number, cell: number) {
+  const size = cell * dpr
+  // dot radii are tuned for CELL; a wider cell only adds gap around the same dot
+  const scale = CELL / cell
   const atlas = document.createElement('canvas')
   atlas.width = size * DOTS.length * LEVELS
   atlas.height = size * CHARGE
@@ -107,7 +113,7 @@ function buildAtlas(dpr: number) {
         ctx.arc(
           (d * LEVELS + l) * size + size / 2,
           c * size + size / 2,
-          radius * size,
+          radius * scale * size,
           0,
           Math.PI * 2,
         )
@@ -119,7 +125,7 @@ function buildAtlas(dpr: number) {
 }
 
 // A jagged walk from the cloud base to the ground, in cell coordinates, with side branches.
-function makeBolt(cols: number, rows: number) {
+function makeBolt(cols: number, rows: number, sparse: boolean) {
   const segments: Segment[] = []
   const walk = (
     x: number,
@@ -133,7 +139,8 @@ function makeBolt(cols: number, rows: number) {
       const nx = x + drift * 1.5 + (Math.random() - 0.5) * 4.5
       const ny = y + 1 + Math.random() * 2.2
       segments.push({ x1: x, y1: y, x2: nx, y2: ny, power })
-      if (depth < 2 && Math.random() < (depth ? 0.06 : 0.11)) {
+      const branchChance = (depth ? 0.06 : 0.11) * (sparse ? 2 : 1)
+      if (depth < 2 && Math.random() < branchChance) {
         const side = Math.random() < 0.5 ? -1 : 1
         walk(nx, ny, side * (0.8 + Math.random()), 6 + Math.random() * 14, power * 0.45, depth + 1)
       }
@@ -148,7 +155,7 @@ function makeBolt(cols: number, rows: number) {
 
 // Light from the bolt at every cell: a hot core plus a soft halo, and the row each cell
 // lights up at, so the stepped leader can reveal it top to bottom.
-function rasterizeBolt(segments: Segment[], cols: number, rows: number) {
+function rasterizeBolt(segments: Segment[], cols: number, rows: number, halo: number) {
   const light = new Float32Array(cols * rows)
   const reach = new Float32Array(cols * rows).fill(Infinity)
   const R = 6
@@ -166,7 +173,7 @@ function rasterizeBolt(segments: Segment[], cols: number, rows: number) {
         const px = s.x1 + dx * t - x
         const py = s.y1 + dy * t - y
         const d2 = px * px + py * py
-        const v = s.power * (Math.exp(-d2 * 1.1) + 0.28 * Math.exp(-d2 * 0.09))
+        const v = s.power * (Math.exp(-d2 * 1.1) + halo * Math.exp(-d2 * 0.09))
         const i = y * cols + x
         if (v > light[i]) light[i] = v
         if (v > 0.05) reach[i] = Math.min(reach[i], s.y1 + dy * t)
@@ -195,7 +202,10 @@ export function AsciiLightning({ className }: { className?: string }) {
 
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
     const dpr = Math.min(window.devicePixelRatio || 1, 2)
-    const { atlas, size } = buildAtlas(dpr)
+    let atlas: HTMLCanvasElement | null = null
+    let size = 0
+    let cell = 0
+    let sparse = false
     let cols = 0
     let rows = 0
     let raf = 0
@@ -206,7 +216,7 @@ export function AsciiLightning({ className }: { className?: string }) {
     const start = performance.now()
 
     const strike = (t: number) => {
-      bolt = rasterizeBolt(makeBolt(cols, rows), cols, rows)
+      bolt = rasterizeBolt(makeBolt(cols, rows, sparse), cols, rows, sparse ? 0.12 : 0.28)
       strikeAt = t
       // now and then a second stroke follows right after the first
       nextStrike = t + (Math.random() < 0.25 ? 0.9 : 1.8 + Math.random() * 2.6)
@@ -216,14 +226,20 @@ export function AsciiLightning({ className }: { className?: string }) {
       const { width, height } = canvas.getBoundingClientRect()
       canvas.width = Math.ceil(width * dpr)
       canvas.height = Math.ceil(height * dpr)
-      cols = Math.ceil(width / CELL)
-      rows = Math.ceil(height / CELL)
+      const nextSparse = width < SPARSE_WIDTH
+      if (!atlas || nextSparse !== sparse) {
+        sparse = nextSparse
+        cell = sparse ? SPARSE_CELL : CELL
+        ;({ atlas, size } = buildAtlas(dpr, cell))
+      }
+      cols = Math.ceil(width / cell)
+      rows = Math.ceil(height / cell)
       bolt = null
     }
 
     const draw = (t: number) => {
       ctx.clearRect(0, 0, canvas.width, canvas.height)
-      if (!cols || !rows) return
+      if (!atlas || !cols || !rows) return
       if (t >= nextStrike) strike(t)
 
       const since = t - strikeAt
@@ -255,7 +271,7 @@ export function AsciiLightning({ className }: { className?: string }) {
                 // stepped leader: a dim, crawling channel
                 if (bolt.reach[i] <= leaderRow) b = lit * 0.45 * (0.6 + 0.4 * Math.random())
               } else {
-                b = lit * flash
+                b = lit * flash * (sparse ? 1.4 : 1)
               }
               if (b > bright) {
                 bright = b
