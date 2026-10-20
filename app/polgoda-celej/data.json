@@ -10,7 +10,8 @@
       "talks": 1,
       "s_money": 1,
       "s_health": 1,
-      "s_social": 1
+      "s_social": 1,
+      "s_fame": 1
     },
     {
       "id": "w02",
@@ -22,7 +23,8 @@
       "talks": 2,
       "s_money": 0,
       "s_health": 1,
-      "s_social": 2
+      "s_social": 2,
+      "s_fame": 1
     },
     {
       "id": "w03",
@@ -34,7 +36,8 @@
       "talks": 0,
       "s_money": 2,
       "s_health": 1,
-      "s_social": 0
+      "s_social": 0,
+      "s_fame": 0
     },
     {
       "id": "w04",
@@ -46,7 +49,8 @@
       "talks": 0,
       "s_money": 0,
       "s_health": 2,
-      "s_social": 1
+      "s_social": 1,
+      "s_fame": 0
     },
     {
       "id": "w05",
@@ -58,7 +62,8 @@
       "talks": 0,
       "s_money": 0,
       "s_health": 1,
-      "s_social": 0
+      "s_social": 0,
+      "s_fame": 2
     },
     {
       "id": "w06",
@@ -70,7 +75,8 @@
       "talks": 1,
       "s_money": 2,
       "s_health": 1,
-      "s_social": 1
+      "s_social": 1,
+      "s_fame": 1
     },
     {
       "id": "w07",
@@ -82,7 +88,8 @@
       "talks": 2,
       "s_money": 2,
       "s_health": 1,
-      "s_social": 1
+      "s_social": 1,
+      "s_fame": 2
     },
     {
       "id": "w08",
@@ -94,7 +101,8 @@
       "talks": 0,
       "s_money": 1,
       "s_health": 0,
-      "s_social": 0
+      "s_social": 0,
+      "s_fame": 1
     },
     {
       "id": "w09",
@@ -106,7 +114,8 @@
       "talks": 1,
       "s_money": 2,
       "s_health": 2,
-      "s_social": 1
+      "s_social": 1,
+      "s_fame": 1
     },
     {
       "id": "w10",
@@ -118,7 +127,8 @@
       "talks": 1,
       "s_money": 1,
       "s_health": 1,
-      "s_social": 1
+      "s_social": 1,
+      "s_fame": 1
     },
     {
       "id": "w11",
@@ -130,7 +140,8 @@
       "talks": 1,
       "s_money": 0,
       "s_health": 1,
-      "s_social": 1
+      "s_social": 1,
+      "s_fame": 1
     },
     {
       "id": "w12",
@@ -142,7 +153,8 @@
       "talks": 1,
       "s_money": 1,
       "s_health": 2,
-      "s_social": 1
+      "s_social": 1,
+      "s_fame": 0
     },
     {
       "id": "w13",
@@ -154,7 +166,8 @@
       "talks": 0,
       "s_money": 0,
       "s_health": 1,
-      "s_social": 0
+      "s_social": 0,
+      "s_fame": 2
     },
     {
       "id": "w14",
@@ -166,7 +179,8 @@
       "talks": 3,
       "s_money": 2,
       "s_health": 1,
-      "s_social": 1
+      "s_social": 1,
+      "s_fame": 2
     },
     {
       "id": "w15",
@@ -178,7 +192,8 @@
       "talks": 2,
       "s_money": 0,
       "s_health": 0,
-      "s_social": 1
+      "s_social": 1,
+      "s_fame": 1
     },
     {
       "id": "w16",
@@ -190,7 +205,8 @@
       "talks": 0,
       "s_money": 1,
       "s_health": 1,
-      "s_social": 0
+      "s_social": 0,
+      "s_fame": 1
     },
     {
       "id": "w17",
@@ -202,7 +218,8 @@
       "talks": 1,
       "s_money": 0,
       "s_health": 1,
-      "s_social": 1
+      "s_social": 1,
+      "s_fame": 1
     },
     {
       "id": "w18",
@@ -214,7 +231,8 @@
       "talks": 1,
       "s_money": 0,
       "s_health": 0,
-      "s_social": 1
+      "s_social": 1,
+      "s_fame": 1
     },
     {
       "id": "w19",
@@ -226,7 +244,8 @@
       "talks": 0,
       "s_money": null,
       "s_health": 0,
-      "s_social": 0
+      "s_social": 0,
+      "s_fame": null
     },
     {
       "id": "w20",
@@ -238,7 +257,8 @@
       "talks": 2,
       "s_money": 2,
       "s_health": 1,
-      "s_social": 1
+      "s_social": 1,
+      "s_fame": 1
     },
     {
       "id": "w21",
@@ -250,7 +270,8 @@
       "talks": 2,
       "s_money": 1,
       "s_health": 1,
-      "s_social": 1
+      "s_social": 1,
+      "s_fame": 1
     },
     {
       "id": "w22",
@@ -262,7 +283,8 @@
       "talks": 4,
       "s_money": 1,
       "s_health": 1,
-      "s_social": 2
+      "s_social": 2,
+      "s_fame": 1
     },
     {
       "id": "w23",
@@ -274,7 +296,8 @@
       "talks": 8,
       "s_money": 1,
       "s_health": 1,
-      "s_social": 2
+      "s_social": 2,
+      "s_fame": 1
     },
     {
       "id": "w24",
