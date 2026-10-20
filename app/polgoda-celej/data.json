@@ -1,0 +1,688 @@
+{
+  "weeks": [
+    {
+      "id": "w01",
+      "label": "6–12 апр",
+      "start": "2026-04-06",
+      "days": 7,
+      "trainings": null,
+      "calories_days": null,
+      "talks": 1,
+      "s_money": 1,
+      "s_health": 1,
+      "s_social": 1
+    },
+    {
+      "id": "w02",
+      "label": "17 апр–7 мая",
+      "start": "2026-04-17",
+      "days": 20,
+      "trainings": null,
+      "calories_days": null,
+      "talks": 2,
+      "s_money": 0,
+      "s_health": 1,
+      "s_social": 2
+    },
+    {
+      "id": "w03",
+      "label": "7–17 мая",
+      "start": "2026-05-07",
+      "days": 10,
+      "trainings": null,
+      "calories_days": null,
+      "talks": 0,
+      "s_money": 2,
+      "s_health": 1,
+      "s_social": 0
+    },
+    {
+      "id": "w04",
+      "label": "17–24 мая",
+      "start": "2026-05-17",
+      "days": 7,
+      "trainings": null,
+      "calories_days": null,
+      "talks": 0,
+      "s_money": 0,
+      "s_health": 2,
+      "s_social": 1
+    },
+    {
+      "id": "w05",
+      "label": "25–31 мая",
+      "start": "2026-05-25",
+      "days": 7,
+      "trainings": null,
+      "calories_days": 2,
+      "talks": 0,
+      "s_money": 0,
+      "s_health": 1,
+      "s_social": 0
+    },
+    {
+      "id": "w06",
+      "label": "1–7 июн",
+      "start": "2026-06-01",
+      "days": 7,
+      "trainings": null,
+      "calories_days": 3,
+      "talks": 1,
+      "s_money": 2,
+      "s_health": 1,
+      "s_social": 1
+    },
+    {
+      "id": "w07",
+      "label": "8–14 июн",
+      "start": "2026-06-08",
+      "days": 7,
+      "trainings": null,
+      "calories_days": 4,
+      "talks": 2,
+      "s_money": 2,
+      "s_health": 1,
+      "s_social": 1
+    },
+    {
+      "id": "w08",
+      "label": "15–21 июн",
+      "start": "2026-06-15",
+      "days": 7,
+      "trainings": null,
+      "calories_days": 2,
+      "talks": 0,
+      "s_money": 1,
+      "s_health": 0,
+      "s_social": 0
+    },
+    {
+      "id": "w09",
+      "label": "22–28 июн",
+      "start": "2026-06-22",
+      "days": 7,
+      "trainings": null,
+      "calories_days": 3,
+      "talks": 1,
+      "s_money": 2,
+      "s_health": 2,
+      "s_social": 1
+    },
+    {
+      "id": "w10",
+      "label": "29 июн–5 июл",
+      "start": "2026-06-29",
+      "days": 7,
+      "trainings": 2,
+      "calories_days": null,
+      "talks": 1,
+      "s_money": 1,
+      "s_health": 1,
+      "s_social": 1
+    },
+    {
+      "id": "w11",
+      "label": "6–12 июл",
+      "start": "2026-07-06",
+      "days": 7,
+      "trainings": 3,
+      "calories_days": 3,
+      "talks": 1,
+      "s_money": 0,
+      "s_health": 1,
+      "s_social": 1
+    },
+    {
+      "id": "w12",
+      "label": "13–19 июл",
+      "start": "2026-07-13",
+      "days": 7,
+      "trainings": 2,
+      "calories_days": 1,
+      "talks": 1,
+      "s_money": 1,
+      "s_health": 2,
+      "s_social": 1
+    },
+    {
+      "id": "w13",
+      "label": "20 июл–2 авг",
+      "start": "2026-07-20",
+      "days": 14,
+      "trainings": 5,
+      "calories_days": null,
+      "talks": 0,
+      "s_money": 0,
+      "s_health": 1,
+      "s_social": 0
+    },
+    {
+      "id": "w14",
+      "label": "3–9 авг",
+      "start": "2026-08-03",
+      "days": 7,
+      "trainings": 3,
+      "calories_days": 1,
+      "talks": 3,
+      "s_money": 2,
+      "s_health": 1,
+      "s_social": 1
+    },
+    {
+      "id": "w15",
+      "label": "10–16 авг",
+      "start": "2026-08-10",
+      "days": 7,
+      "trainings": 1,
+      "calories_days": null,
+      "talks": 2,
+      "s_money": 0,
+      "s_health": 0,
+      "s_social": 1
+    },
+    {
+      "id": "w16",
+      "label": "17–23 авг",
+      "start": "2026-08-17",
+      "days": 7,
+      "trainings": 3,
+      "calories_days": null,
+      "talks": 0,
+      "s_money": 1,
+      "s_health": 1,
+      "s_social": 0
+    },
+    {
+      "id": "w17",
+      "label": "24–30 авг",
+      "start": "2026-08-24",
+      "days": 7,
+      "trainings": 3,
+      "calories_days": null,
+      "talks": 1,
+      "s_money": 0,
+      "s_health": 1,
+      "s_social": 1
+    },
+    {
+      "id": "w18",
+      "label": "31 авг–6 сен",
+      "start": "2026-08-31",
+      "days": 7,
+      "trainings": null,
+      "calories_days": null,
+      "talks": 1,
+      "s_money": 0,
+      "s_health": 0,
+      "s_social": 1
+    },
+    {
+      "id": "w19",
+      "label": "7–13 сен",
+      "start": "2026-09-07",
+      "days": 7,
+      "trainings": 1,
+      "calories_days": null,
+      "talks": 0,
+      "s_money": null,
+      "s_health": 0,
+      "s_social": 0
+    },
+    {
+      "id": "w20",
+      "label": "14–20 сен",
+      "start": "2026-09-14",
+      "days": 7,
+      "trainings": 2,
+      "calories_days": null,
+      "talks": 2,
+      "s_money": 2,
+      "s_health": 1,
+      "s_social": 1
+    },
+    {
+      "id": "w21",
+      "label": "21–27 сен",
+      "start": "2026-09-21",
+      "days": 7,
+      "trainings": 3,
+      "calories_days": null,
+      "talks": 2,
+      "s_money": 1,
+      "s_health": 1,
+      "s_social": 1
+    },
+    {
+      "id": "w22",
+      "label": "28 сен–4 окт",
+      "start": "2026-09-28",
+      "days": 7,
+      "trainings": 3,
+      "calories_days": null,
+      "talks": 4,
+      "s_money": 1,
+      "s_health": 1,
+      "s_social": 2
+    },
+    {
+      "id": "w23",
+      "label": "5–11 окт",
+      "start": "2026-10-05",
+      "days": 7,
+      "trainings": 3,
+      "calories_days": null,
+      "talks": 8,
+      "s_money": 1,
+      "s_health": 1,
+      "s_social": 2
+    }
+  ],
+  "lifts": [
+    {
+      "id": "l01",
+      "date": "2026-05-17",
+      "lift": "Вес тела",
+      "weight": 64,
+      "reps": null,
+      "kind": "вес тела"
+    },
+    {
+      "id": "l02",
+      "date": "2026-05-24",
+      "lift": "Вес тела",
+      "weight": 65,
+      "reps": null,
+      "kind": "вес тела"
+    },
+    {
+      "id": "l03",
+      "date": "2026-05-24",
+      "lift": "Присед",
+      "weight": 70,
+      "reps": "8–9",
+      "kind": "подход"
+    },
+    {
+      "id": "l04",
+      "date": "2026-05-24",
+      "lift": "Жим",
+      "weight": 75,
+      "reps": "1",
+      "kind": "на раз"
+    },
+    {
+      "id": "l05",
+      "date": "2026-06-28",
+      "lift": "Присед",
+      "weight": 80,
+      "reps": null,
+      "kind": "подход"
+    },
+    {
+      "id": "l06",
+      "date": "2026-06-28",
+      "lift": "Жим",
+      "weight": 70,
+      "reps": "6",
+      "kind": "подход"
+    },
+    {
+      "id": "l07",
+      "date": "2026-07-05",
+      "lift": "Жим",
+      "weight": 70,
+      "reps": "6",
+      "kind": "подход"
+    },
+    {
+      "id": "l08",
+      "date": "2026-07-12",
+      "lift": "Жим",
+      "weight": 72.5,
+      "reps": "4",
+      "kind": "подход"
+    },
+    {
+      "id": "l09",
+      "date": "2026-07-19",
+      "lift": "Присед",
+      "weight": 85,
+      "reps": "8",
+      "kind": "подход"
+    },
+    {
+      "id": "l10",
+      "date": "2026-08-09",
+      "lift": "Присед",
+      "weight": 85,
+      "reps": null,
+      "kind": "подход"
+    },
+    {
+      "id": "l11",
+      "date": "2026-08-09",
+      "lift": "Жим",
+      "weight": 70,
+      "reps": null,
+      "kind": "потолок"
+    },
+    {
+      "id": "l12",
+      "date": "2026-10-11",
+      "lift": "Присед",
+      "weight": 75,
+      "reps": null,
+      "kind": "рабочий"
+    },
+    {
+      "id": "l13",
+      "date": "2026-10-11",
+      "lift": "Жим",
+      "weight": 65,
+      "reps": null,
+      "kind": "рабочий"
+    }
+  ],
+  "contacts": [
+    {
+      "id": "c01",
+      "week": "w01",
+      "channel": "Качалка",
+      "who": "Глеб",
+      "format": "вживую",
+      "count": 1,
+      "note": "Заобщались в качалке",
+      "week_label": "6–12 апр"
+    },
+    {
+      "id": "c02",
+      "week": "w02",
+      "channel": "Качалка",
+      "who": "Чел, который разобрал технику",
+      "format": "вживую",
+      "count": 1,
+      "note": "Разобрал вам технику",
+      "week_label": "17 апр–7 мая"
+    },
+    {
+      "id": "c03",
+      "week": "w02",
+      "channel": "Threads",
+      "who": "Люди из сферы",
+      "format": "онлайн",
+      "count": 1,
+      "note": "Переписка в Threads",
+      "week_label": "17 апр–7 мая"
+    },
+    {
+      "id": "c04",
+      "week": "w06",
+      "channel": "Качалка",
+      "who": "Глеб",
+      "format": "вживую",
+      "count": 1,
+      "note": "Нормально пообщались",
+      "week_label": "1–7 июн"
+    },
+    {
+      "id": "c05",
+      "week": "w07",
+      "channel": "Качалка",
+      "who": "Двое из качалки",
+      "format": "вживую",
+      "count": 2,
+      "note": "Поговорил с двумя",
+      "week_label": "8–14 июн"
+    },
+    {
+      "id": "c06",
+      "week": "w09",
+      "channel": "Качалка",
+      "who": "Салават",
+      "format": "вживую",
+      "count": 1,
+      "note": "Новый знакомый",
+      "week_label": "22–28 июн"
+    },
+    {
+      "id": "c07",
+      "week": "w10",
+      "channel": "Друзья и семья",
+      "who": "Димас",
+      "format": "онлайн",
+      "count": 1,
+      "note": "Написал, узнал, как дела",
+      "week_label": "29 июн–5 июл"
+    },
+    {
+      "id": "c08",
+      "week": "w11",
+      "channel": "Друзья и семья",
+      "who": "Старый друг",
+      "format": "онлайн",
+      "count": 1,
+      "note": "Написал",
+      "week_label": "6–12 июл"
+    },
+    {
+      "id": "c09",
+      "week": "w12",
+      "channel": "Качалка",
+      "who": "Чел с качалки",
+      "format": "вживую",
+      "count": 1,
+      "note": "Договорились ходить вместе",
+      "week_label": "13–19 июл"
+    },
+    {
+      "id": "c10",
+      "week": "w14",
+      "channel": "Random Coffee и айтишники",
+      "who": "Три программиста, один из них коллега",
+      "format": "онлайн",
+      "count": 3,
+      "note": "Диалоги онлайн",
+      "week_label": "3–9 авг"
+    },
+    {
+      "id": "c11",
+      "week": "w15",
+      "channel": "Коллеги",
+      "who": "Ушедший коллега",
+      "format": "вживую",
+      "count": 1,
+      "note": "",
+      "week_label": "10–16 авг"
+    },
+    {
+      "id": "c12",
+      "week": "w15",
+      "channel": "Коллеги",
+      "who": "Коллега",
+      "format": "вживую",
+      "count": 1,
+      "note": "",
+      "week_label": "10–16 авг"
+    },
+    {
+      "id": "c13",
+      "week": "w17",
+      "channel": "Друзья и семья",
+      "who": "Друзья",
+      "format": "вживую",
+      "count": 1,
+      "note": "Встреча в субботу",
+      "week_label": "24–30 авг"
+    },
+    {
+      "id": "c14",
+      "week": "w18",
+      "channel": "Друзья и семья",
+      "who": "Друг детства",
+      "format": "вживую",
+      "count": 1,
+      "note": "Идея сходки айтишников в его универе",
+      "week_label": "31 авг–6 сен"
+    },
+    {
+      "id": "c15",
+      "week": "w20",
+      "channel": "Random Coffee и айтишники",
+      "who": "Айтишник",
+      "format": "онлайн",
+      "count": 1,
+      "note": "Random Coffee",
+      "week_label": "14–20 сен"
+    },
+    {
+      "id": "c16",
+      "week": "w20",
+      "channel": "Друзья и семья",
+      "who": "Димас",
+      "format": "вживую",
+      "count": 1,
+      "note": "Встреча, с ним Макс",
+      "week_label": "14–20 сен"
+    },
+    {
+      "id": "c17",
+      "week": "w21",
+      "channel": "Random Coffee и айтишники",
+      "who": "Разработчик",
+      "format": "онлайн",
+      "count": 1,
+      "note": "Random Coffee, дал мысли",
+      "week_label": "21–27 сен"
+    },
+    {
+      "id": "c18",
+      "week": "w21",
+      "channel": "Качалка",
+      "who": "Русик",
+      "format": "вживую",
+      "count": 1,
+      "note": "Начали ходить втроём",
+      "week_label": "21–27 сен"
+    },
+    {
+      "id": "c19",
+      "week": "w22",
+      "channel": "Друзья и семья",
+      "who": "Димас",
+      "format": "вживую",
+      "count": 1,
+      "note": "Встреча, пел со сцены",
+      "week_label": "28 сен–4 окт"
+    },
+    {
+      "id": "c20",
+      "week": "w22",
+      "channel": "Друзья и семья",
+      "who": "Тимур",
+      "format": "вживую",
+      "count": 1,
+      "note": "Ходили на гд",
+      "week_label": "28 сен–4 окт"
+    },
+    {
+      "id": "c21",
+      "week": "w22",
+      "channel": "Коллеги",
+      "who": "Коллега",
+      "format": "вживую",
+      "count": 1,
+      "note": "Узнал, что ему 22",
+      "week_label": "28 сен–4 окт"
+    },
+    {
+      "id": "c22",
+      "week": "w22",
+      "channel": "Качалка",
+      "who": "Русик",
+      "format": "вживую",
+      "count": 1,
+      "note": "Оказался почти коллегой",
+      "week_label": "28 сен–4 окт"
+    },
+    {
+      "id": "c23",
+      "week": "w23",
+      "channel": "Random Coffee и айтишники",
+      "who": "Разработчик",
+      "format": "онлайн",
+      "count": 1,
+      "note": "Random Coffee",
+      "week_label": "5–11 окт"
+    },
+    {
+      "id": "c24",
+      "week": "w23",
+      "channel": "Друзья и семья",
+      "who": "Макс и его друзья",
+      "format": "вживую",
+      "count": 1,
+      "note": "Встреча",
+      "week_label": "5–11 окт"
+    },
+    {
+      "id": "c25",
+      "week": "w23",
+      "channel": "Random Coffee и айтишники",
+      "who": "Бизнес-аналитик",
+      "format": "онлайн",
+      "count": 1,
+      "note": "Дала доступ к пет-проекту на тест",
+      "week_label": "5–11 окт"
+    },
+    {
+      "id": "c26",
+      "week": "w23",
+      "channel": "Друзья и семья",
+      "who": "Альберт",
+      "format": "онлайн",
+      "count": 1,
+      "note": "Договорились побегать",
+      "week_label": "5–11 окт"
+    },
+    {
+      "id": "c27",
+      "week": "w23",
+      "channel": "Коллеги",
+      "who": "Анатолий",
+      "format": "онлайн",
+      "count": 1,
+      "note": "Написал",
+      "week_label": "5–11 окт"
+    },
+    {
+      "id": "c28",
+      "week": "w23",
+      "channel": "Коллеги",
+      "who": "Марго",
+      "format": "онлайн",
+      "count": 1,
+      "note": "Спросил про контакты в геймдеве",
+      "week_label": "5–11 окт"
+    },
+    {
+      "id": "c29",
+      "week": "w23",
+      "channel": "Коллеги",
+      "who": "Бывший коллега",
+      "format": "онлайн",
+      "count": 1,
+      "note": "Написал",
+      "week_label": "5–11 окт"
+    },
+    {
+      "id": "c30",
+      "week": "w23",
+      "channel": "Друзья и семья",
+      "who": "Сестра",
+      "format": "вживую",
+      "count": 1,
+      "note": "Давно не виделись",
+      "week_label": "5–11 окт"
+    }
+  ]
+}

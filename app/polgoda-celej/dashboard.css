@@ -1,0 +1,45 @@
+/* Chart internals of the goals dashboard; d3 draws into these, so they stay plain CSS. */
+.gp {
+  --fg: #f4f4f5;
+  --fg-muted: #a1a1aa;
+  --panel: rgb(12 12 14);
+  --line: rgb(255 255 255 / 0.08);
+  --chart-grid: rgb(255 255 255 / 0.07);
+  --chart-axis: rgb(255 255 255 / 0.25);
+  --chart-muted: rgb(255 255 255 / 0.22);
+  --chart-reference: #a1a1aa;
+  --c1: #7dd3fc;
+  --c2: #f0a35c;
+  --c3: #5cc496;
+  --c4: #b48ce0;
+  --c5: #ec7b72;
+}
+.gp .chart { position: relative; min-height: 200px; }
+.gp .chart.heat { min-height: 88px; }
+.gp #chan { min-height: 160px; }
+.gp .chart svg { display: block; overflow: visible; }
+.gp .tick { fill: var(--fg-muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+.gp .endlbl { font-size: 12px; font-variant-numeric: tabular-nums; }
+.gp .tip {
+  position: absolute; display: none; pointer-events: none; z-index: 2; max-width: 16rem;
+  padding: 4px 8px; font-size: 12px; color: var(--fg);
+  background: rgb(24 24 27 / 0.95); border: 1px solid rgb(255 255 255 / 0.12); border-radius: 10px;
+  box-shadow: 0 4px 16px rgb(0 0 0 / 0.45);
+}
+.gp .tip .h { color: var(--fg-muted); }
+.gp .tip .sw { display: inline-block; width: 0.5rem; height: 0.5rem; border-radius: 2px; margin-right: 0.375rem; }
+.gp .legend { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 12px; color: var(--fg-muted); margin-top: 8px; }
+.gp .legend i { display: inline-block; width: 0.625rem; height: 0.625rem; border-radius: 2px; margin-right: 0.375rem; vertical-align: -1px; }
+.gp .legend .lg2 { background: var(--c1); }
+.gp .legend .lg1 { background: var(--c1); opacity: 0.38; }
+.gp .legend .lg0 { background: var(--chart-grid); }
+.gp .legend .lgn { border: 1px dashed var(--chart-muted); width: 0.5rem; height: 0.5rem; }
+.gp table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.gp th {
+  position: sticky; top: 0; background: var(--panel); text-align: left; font-weight: 500; font-size: 12px;
+  color: var(--fg-muted); padding: 4px 8px; border-bottom: 1px solid var(--line);
+}
+.gp td { padding: 6px 8px; border-bottom: 1px solid var(--line); vertical-align: top; color: #d4d4d8; }
+.gp td.d { white-space: nowrap; color: var(--fg-muted); font-variant-numeric: tabular-nums; }
+.gp td .sub { font-size: 12px; color: var(--fg-muted); margin-top: 2px; }
+.gp td.a i { display: inline-block; width: 0.5rem; height: 0.5rem; border-radius: 50%; margin-right: 0.375rem; }
