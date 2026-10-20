@@ -131,26 +131,24 @@ export function Dashboard() {
         <div className="chart" id="talks" />
         <div className="legend" id="talks-legend" />
       </Card>
-      <div className="grid gap-4 sm:grid-cols-2">
-        <Card title="Откуда связи" note="Яркая часть — последние 6 недель, бледная — всё, что было до них.">
-          <div className="chart" id="chan" />
-        </Card>
-        <Card title="Кто это был" note="Свежие сверху.">
-          <div className="max-h-[26rem] overflow-auto">
-            <table id="ct">
-              <thead>
-                <tr>
-                  <th>Неделя</th>
-                  <th>Кто</th>
-                  <th>Канал</th>
-                  <th>Как</th>
-                </tr>
-              </thead>
-              <tbody />
-            </table>
-          </div>
-        </Card>
-      </div>
+      <Card title="Откуда связи" note="Яркая часть — последние 6 недель, бледная — всё, что было до них.">
+        <div className="chart" id="chan" />
+      </Card>
+      <Card title="Кто это был" note="Свежие сверху.">
+        <div className="max-h-[26rem] overflow-auto">
+          <table id="ct">
+            <thead>
+              <tr>
+                <th>Неделя</th>
+                <th>Кто</th>
+                <th>Канал</th>
+                <th>Как</th>
+              </tr>
+            </thead>
+            <tbody />
+          </table>
+        </div>
+      </Card>
     </div>
   )
 }
