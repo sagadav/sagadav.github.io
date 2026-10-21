@@ -1,6 +1,12 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
 @custom-variant dark (&:is(.dark *));
+/* a phone in either orientation; keep in sync with PHONE in app/fun/pesochnica/game.tsx */
+@custom-variant phone {
+  @media (max-width: 639px), (pointer: coarse) and (max-height: 500px) {
+    @slot;
+  }
+}
 
 /*
   The default border color has changed to `currentColor` in Tailwind CSS v4,

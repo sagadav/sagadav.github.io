@@ -1,6 +1,8 @@
 'use client'
 import { useEffect, useRef, useState } from 'react'
+import Link from 'next/link'
 import {
+  ArrowLeftIcon,
   BombIcon,
   BrickWallIcon,
   EraserIcon,
@@ -18,8 +20,8 @@ import {
 // sand, and cracks the blocks around the crater into falling rubble. Bombs caught
 // in a blast go off shortly after, so they chain.
 
-// Grid size is picked once per mount from the container (see gridSize) and set
-// before a world is created; everything below reads these.
+// Grid size is picked from the container (see gridSize) and set before a world
+// is created; everything below reads these.
 let W = 160
 let H = 110
 const TICK = 1000 / 60
@@ -139,14 +141,14 @@ function buildScene(w: World) {
   }
 }
 
-// Phones get fewer, bigger cells and a portrait field sized to leave room for
-// the toolbars on screen.
-function gridSize(el: HTMLElement) {
-  const width = el.clientWidth
-  if (width >= 520) return { w: 160, h: 110 }
-  const w = 100
-  const h = Math.round((w * window.innerHeight * 0.6) / width)
-  return { w, h: Math.min(Math.max(h, 80), 150) }
+// Must match the `phone` variant in globals.css: there the game covers the whole
+// screen and the grid takes the shape of whatever space is left between toolbars.
+const PHONE = '(max-width: 639px), (pointer: coarse) and (max-height: 500px)'
+
+function gridSize(box: HTMLElement) {
+  if (!window.matchMedia(PHONE).matches) return { w: 160, h: 110 }
+  const w = Math.min(Math.max(Math.round(box.clientWidth / 3.5), 80), 160)
+  return { w, h: Math.max(Math.round((w * box.clientHeight) / box.clientWidth), 40) }
 }
 
 function stamp(w: World, b: Bomb, type: number) {
@@ -410,9 +412,9 @@ const TOOLS: { id: Tool; label: string; short?: string; icon: typeof BombIcon }[
 const BUTTON =
   'glass inline-flex cursor-pointer touch-manipulation items-center justify-center transition-colors duration-200'
 
-// on phones the tools are a single row of icon tiles, from sm up they are pills
-const TOOL_BUTTON = `${BUTTON} flex-col gap-1 rounded-xl px-1 py-2 text-[11px] sm:flex-row sm:gap-1.5 sm:rounded-full sm:px-3 sm:py-1.5 sm:text-sm`
-const ACTION_BUTTON = `${BUTTON} gap-1.5 rounded-full px-2 py-1.5 text-xs text-zinc-300 hover:text-zinc-50 sm:px-3 sm:text-sm`
+// on phones the tools are a row of icon tiles under the thumb, elsewhere pills
+const TOOL_BUTTON = `${BUTTON} gap-1.5 rounded-full px-3 py-1.5 text-sm phone:flex-col phone:gap-1 phone:rounded-xl phone:px-1 phone:py-2 phone:text-[11px]`
+const ACTION_BUTTON = `${BUTTON} gap-1.5 rounded-full px-3 py-1.5 text-sm text-zinc-300 hover:text-zinc-50 phone:h-9 phone:min-w-9 phone:px-2.5 phone:text-xs`
 
 export function SandBombs() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -423,12 +425,16 @@ export function SandBombs() {
   const mutedRef = useRef(false)
   const [tool, setTool] = useState<Tool>('bomb')
   const [muted, setMuted] = useState(false)
+  // bumped when the screen turns or crosses into the phone layout, to rebuild the
+  // world in the new shape instead of stretching the old one
+  const [layout, setLayout] = useState(0)
 
   useEffect(() => {
     const canvas = canvasRef.current
     const ctx = canvas?.getContext('2d')
-    if (!canvas || !ctx) return
-    const size = gridSize(canvas.parentElement ?? canvas)
+    const box = canvas?.parentElement
+    if (!canvas || !ctx || !box) return
+    const size = gridSize(box)
     W = size.w
     H = size.h
     canvas.width = W
@@ -465,12 +471,30 @@ export function SandBombs() {
     }
     raf = requestAnimationFrame(loop)
 
+    const onResize = () => {
+      const next = gridSize(box)
+      if (Math.abs(next.w / next.h - W / H) > 0.15 * (W / H)) setLayout((n) => n + 1)
+    }
+    window.addEventListener('resize', onResize)
+
+    // the full-screen game sits over the page, which must not scroll underneath
+    const root = document.documentElement
+    if (window.matchMedia(PHONE).matches) root.style.overflow = 'hidden'
+
     return () => {
       cancelAnimationFrame(raf)
+      window.removeEventListener('resize', onResize)
+      root.style.overflow = ''
+    }
+  }, [layout])
+
+  useEffect(
+    () => () => {
       soundRef.current?.ctx.close()
       soundRef.current = null
-    }
-  }, [])
+    },
+    [],
+  )
 
   const selectTool = (next: Tool) => {
     toolRef.current = next
@@ -547,8 +571,8 @@ export function SandBombs() {
   }
 
   return (
-    <div className="select-none [-webkit-touch-callout:none]">
-      <div className="grid grid-cols-5 gap-1.5 sm:flex sm:flex-wrap sm:gap-2">
+    <div className="flex flex-col gap-4 select-none [-webkit-touch-callout:none] phone:fixed phone:inset-0 phone:z-50 phone:h-[100dvh] phone:touch-none phone:gap-2 phone:bg-black phone:px-2 phone:pt-[max(0.5rem,env(safe-area-inset-top))] phone:pb-[max(0.5rem,env(safe-area-inset-bottom))]">
+      <div className="flex flex-wrap gap-2 phone:grid phone:grid-cols-5 phone:gap-1.5 phone:order-last">
         {TOOLS.map(({ id, label, short, icon: Icon }) => (
           <button
             key={id}
@@ -558,12 +582,12 @@ export function SandBombs() {
             className={`${TOOL_BUTTON} ${tool === id ? 'border-sky-300/60 text-sky-200' : 'text-zinc-300 hover:text-zinc-50'}`}
           >
             <Icon className={id === 'mega' ? 'h-5 w-5' : 'h-4 w-4'} />
-            <span className="sm:hidden">{short ?? label}</span>
-            <span className="hidden sm:inline">{label}</span>
+            <span className="phone:hidden">{label}</span>
+            <span className="hidden phone:inline">{short ?? label}</span>
           </button>
         ))}
       </div>
-      <div className="mt-3 overflow-hidden sm:mt-4 rounded-2xl bg-zinc-950/60 p-1 ring-1 ring-white/10 ring-inset">
+      <div className="relative overflow-hidden rounded-2xl bg-zinc-950/60 p-1 ring-1 ring-white/10 ring-inset phone:min-h-0 phone:flex-1 phone:rounded-xl phone:p-0">
         <canvas
           ref={canvasRef}
           width={W}
@@ -573,21 +597,28 @@ export function SandBombs() {
           onPointerUp={onPointerUp}
           onPointerCancel={onPointerUp}
           style={{ aspectRatio: `${W} / ${H}` }}
-          className="block w-full cursor-crosshair touch-none rounded-xl [image-rendering:pixelated]"
+          className="block w-full cursor-crosshair touch-none rounded-xl [image-rendering:pixelated] phone:absolute phone:inset-0 phone:h-full"
         />
       </div>
-      <div className="mt-3 grid grid-cols-[1fr_1fr_1fr_auto] gap-1.5 sm:mt-4 sm:flex sm:flex-wrap sm:gap-2">
+      <div className="flex flex-wrap gap-2 phone:order-first phone:flex-nowrap phone:gap-1.5">
+        <Link
+          href="/fun"
+          aria-label="Назад"
+          className="glass hidden h-9 min-w-9 touch-manipulation items-center justify-center rounded-full px-2.5 text-zinc-300 transition-colors duration-200 hover:text-zinc-50 phone:mr-auto phone:inline-flex"
+        >
+          <ArrowLeftIcon className="h-4 w-4" />
+        </Link>
         <button type="button" onClick={detonateAll} className={ACTION_BUTTON}>
           <ZapIcon className="h-4 w-4" />
           Взорвать всё
         </button>
-        <button type="button" onClick={reset} className={ACTION_BUTTON}>
+        <button type="button" onClick={reset} aria-label="Заново" className={ACTION_BUTTON}>
           <RotateCcwIcon className="h-4 w-4" />
-          Заново
+          <span className="phone:hidden">Заново</span>
         </button>
-        <button type="button" onClick={clear} className={ACTION_BUTTON}>
+        <button type="button" onClick={clear} aria-label="Очистить" className={ACTION_BUTTON}>
           <Trash2Icon className="h-4 w-4" />
-          Очистить
+          <span className="phone:hidden">Очистить</span>
         </button>
         <button
           type="button"

@@ -1,9 +1,17 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import Link from 'next/link'
 import { SandBombs } from './game'
 
 export const metadata: Metadata = {
   title: 'Песочница с бомбами — Сагадеев Артур',
+}
+
+// lets the full-screen game on phones reach under the notch and home bar
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: '#000000',
+  viewportFit: 'cover',
 }
 
 const MONO = 'font-[family-name:var(--font-geist-mono)]'
