@@ -20,11 +20,11 @@ export default function SandboxPage() {
       <h1 className="text-4xl font-semibold tracking-tighter text-zinc-50 sm:text-5xl">
         Песочница с бомбами
       </h1>
-      <p className="mt-4 text-zinc-400">
+      <p className="mt-3 text-sm text-zinc-400 sm:mt-4 sm:text-base">
         Ставь бомбы и смотри, как разлетаются песок и блоки. Бомбы, задетые взрывом, детонируют
         следом. Песок, блоки и ластик рисуются с зажатой кнопкой или пальцем.
       </p>
-      <div className="mt-8">
+      <div className="mt-6 sm:mt-8">
         <SandBombs />
       </div>
     </main>

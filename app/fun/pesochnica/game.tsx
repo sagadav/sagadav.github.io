@@ -18,8 +18,10 @@ import {
 // sand, and cracks the blocks around the crater into falling rubble. Bombs caught
 // in a blast go off shortly after, so they chain.
 
-const W = 160
-const H = 110
+// Grid size is picked once per mount from the container (see gridSize) and set
+// before a world is created; everything below reads these.
+let W = 160
+let H = 110
 const TICK = 1000 / 60
 const MAX_PARTICLES = 5000
 const MAX_BOMBS = 40
@@ -92,8 +94,12 @@ function buildScene(w: World) {
   w.bombs = []
   w.particles = []
 
+  // the layout is drawn for 160×110 and stretched to whatever grid we got
+  const sx = W / 160
+  const sy = H / 110
+
   for (let x = 0; x < W; x++) {
-    const top = H - 18 - Math.round(Math.sin(x * 0.045) * 4 + Math.sin(x * 0.11 + 1) * 2)
+    const top = H - Math.round(18 * sy) - Math.round(Math.sin(x * 0.045) * 4 + Math.sin(x * 0.11 + 1) * 2)
     for (let y = top; y < H; y++) put(w, y * W + x, SAND)
   }
 
@@ -104,7 +110,7 @@ function buildScene(w: World) {
     [70, 26, 72],
     [108, 16, 44],
     [132, 22, 60],
-  ]
+  ].map(([left, width, height]) => [Math.round(left * sx), Math.round(width * sx), Math.round(height * sy)])
   for (const [left, width, height] of towers) {
     const roof = H - height
     for (let y = roof; y < H; y++) {
@@ -122,13 +128,25 @@ function buildScene(w: World) {
   }
 
   // a bridge between the second and third towers with a sand heap on it
-  for (let x = 54; x < 70; x++) {
-    put(w, (H - 34) * W + x, BLOCK)
-    put(w, (H - 33) * W + x, BLOCK)
-    for (let y = H - 38; y < H - 34; y++) {
+  const [left, width, height] = towers[1]
+  const deck = H - height + 2
+  for (let x = left + width; x < towers[2][0]; x++) {
+    put(w, deck * W + x, BLOCK)
+    put(w, (deck + 1) * W + x, BLOCK)
+    for (let y = deck - 4; y < deck; y++) {
       if (Math.random() < 0.7) put(w, y * W + x, SAND)
     }
   }
+}
+
+// Phones get fewer, bigger cells and a portrait field sized to leave room for
+// the toolbars on screen.
+function gridSize(el: HTMLElement) {
+  const width = el.clientWidth
+  if (width >= 520) return { w: 160, h: 110 }
+  const w = 100
+  const h = Math.round((w * window.innerHeight * 0.6) / width)
+  return { w, h: Math.min(Math.max(h, 80), 150) }
 }
 
 function stamp(w: World, b: Bomb, type: number) {
@@ -381,16 +399,20 @@ function boom(sound: Sound, size: number) {
   source.start()
 }
 
-const TOOLS: { id: Tool; label: string; icon: typeof BombIcon }[] = [
+const TOOLS: { id: Tool; label: string; short?: string; icon: typeof BombIcon }[] = [
   { id: 'bomb', label: 'Бомба', icon: BombIcon },
-  { id: 'mega', label: 'Мегабомба', icon: BombIcon },
+  { id: 'mega', label: 'Мегабомба', short: 'Мега', icon: BombIcon },
   { id: 'sand', label: 'Песок', icon: HourglassIcon },
   { id: 'block', label: 'Блоки', icon: BrickWallIcon },
   { id: 'erase', label: 'Ластик', icon: EraserIcon },
 ]
 
 const BUTTON =
-  'glass inline-flex cursor-pointer items-center gap-1.5 rounded-full px-3 py-1.5 text-sm transition-colors duration-200'
+  'glass inline-flex cursor-pointer touch-manipulation items-center justify-center transition-colors duration-200'
+
+// on phones the tools are a single row of icon tiles, from sm up they are pills
+const TOOL_BUTTON = `${BUTTON} flex-col gap-1 rounded-xl px-1 py-2 text-[11px] sm:flex-row sm:gap-1.5 sm:rounded-full sm:px-3 sm:py-1.5 sm:text-sm`
+const ACTION_BUTTON = `${BUTTON} gap-1.5 rounded-full px-2 py-1.5 text-xs text-zinc-300 hover:text-zinc-50 sm:px-3 sm:text-sm`
 
 export function SandBombs() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -406,6 +428,12 @@ export function SandBombs() {
     const canvas = canvasRef.current
     const ctx = canvas?.getContext('2d')
     if (!canvas || !ctx) return
+    const size = gridSize(canvas.parentElement ?? canvas)
+    W = size.w
+    H = size.h
+    canvas.width = W
+    canvas.height = H
+    canvas.style.aspectRatio = `${W} / ${H}`
     const world = createWorld()
     buildScene(world)
     worldRef.current = world
@@ -519,22 +547,23 @@ export function SandBombs() {
   }
 
   return (
-    <div>
-      <div className="flex flex-wrap gap-2">
-        {TOOLS.map(({ id, label, icon: Icon }) => (
+    <div className="select-none [-webkit-touch-callout:none]">
+      <div className="grid grid-cols-5 gap-1.5 sm:flex sm:flex-wrap sm:gap-2">
+        {TOOLS.map(({ id, label, short, icon: Icon }) => (
           <button
             key={id}
             type="button"
             onClick={() => selectTool(id)}
             aria-pressed={tool === id}
-            className={`${BUTTON} ${tool === id ? 'border-sky-300/60 text-sky-200' : 'text-zinc-300 hover:text-zinc-50'}`}
+            className={`${TOOL_BUTTON} ${tool === id ? 'border-sky-300/60 text-sky-200' : 'text-zinc-300 hover:text-zinc-50'}`}
           >
             <Icon className={id === 'mega' ? 'h-5 w-5' : 'h-4 w-4'} />
-            {label}
+            <span className="sm:hidden">{short ?? label}</span>
+            <span className="hidden sm:inline">{label}</span>
           </button>
         ))}
       </div>
-      <div className="mt-4 overflow-hidden rounded-2xl bg-zinc-950/60 p-1 ring-1 ring-white/10 ring-inset">
+      <div className="mt-3 overflow-hidden sm:mt-4 rounded-2xl bg-zinc-950/60 p-1 ring-1 ring-white/10 ring-inset">
         <canvas
           ref={canvasRef}
           width={W}
@@ -547,16 +576,16 @@ export function SandBombs() {
           className="block w-full cursor-crosshair touch-none rounded-xl [image-rendering:pixelated]"
         />
       </div>
-      <div className="mt-4 flex flex-wrap gap-2">
-        <button type="button" onClick={detonateAll} className={`${BUTTON} text-zinc-300 hover:text-zinc-50`}>
+      <div className="mt-3 grid grid-cols-[1fr_1fr_1fr_auto] gap-1.5 sm:mt-4 sm:flex sm:flex-wrap sm:gap-2">
+        <button type="button" onClick={detonateAll} className={ACTION_BUTTON}>
           <ZapIcon className="h-4 w-4" />
           Взорвать всё
         </button>
-        <button type="button" onClick={reset} className={`${BUTTON} text-zinc-300 hover:text-zinc-50`}>
+        <button type="button" onClick={reset} className={ACTION_BUTTON}>
           <RotateCcwIcon className="h-4 w-4" />
           Заново
         </button>
-        <button type="button" onClick={clear} className={`${BUTTON} text-zinc-300 hover:text-zinc-50`}>
+        <button type="button" onClick={clear} className={ACTION_BUTTON}>
           <Trash2Icon className="h-4 w-4" />
           Очистить
         </button>
@@ -564,7 +593,7 @@ export function SandBombs() {
           type="button"
           onClick={toggleMuted}
           aria-label={muted ? 'Включить звук' : 'Выключить звук'}
-          className={`${BUTTON} text-zinc-300 hover:text-zinc-50`}
+          className={ACTION_BUTTON}
         >
           {muted ? <VolumeXIcon className="h-4 w-4" /> : <Volume2Icon className="h-4 w-4" />}
         </button>
