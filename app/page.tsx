@@ -210,6 +210,9 @@ export default function Personal() {
               {link.label} <span aria-hidden="true">↗</span>
             </MagneticLink>
           ))}
+          <MagneticLink link="/fun">
+            FUN <span aria-hidden="true">✦</span>
+          </MagneticLink>
         </div>
       </motion.section>
 

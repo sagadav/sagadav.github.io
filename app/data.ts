@@ -17,6 +17,12 @@ export type BlogPost = {
   readingTime: string
 }
 
+type FunLink = {
+  title: string
+  description: string
+  link: string
+}
+
 type SocialLink = {
   label: string
   link: string
@@ -50,6 +56,24 @@ export const BLOG_POSTS: BlogPost[] = [
     uid: 'ascii-lightning',
     date: '19 октября 2026',
     readingTime: '5 мин',
+  },
+]
+
+export const FUN_LINKS: FunLink[] = [
+  {
+    title: 'Песочница с бомбами',
+    description: 'Физическая игрушка: взрывай песок и блоки, бомбы детонируют цепочкой.',
+    link: '/fun/pesochnica',
+  },
+  {
+    title: 'Кружки из ТГ',
+    description: 'Видеосообщения из Telegram.',
+    link: '/krugi',
+  },
+  {
+    title: 'Полгода целей',
+    description: 'Дашборд целей на полгода: прогресс по неделям.',
+    link: '/polgoda-celej',
   },
 ]
 
