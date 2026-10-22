@@ -5,6 +5,8 @@ export type Project = {
   video?: string
   id: string,
   images?: string[],
+  // phone screenshots: thumbnail shows a row, carousel fits by height
+  portrait?: boolean,
   tags?: string[],
 }
 
@@ -44,6 +46,16 @@ export const PROJECTS: Project[] = [
       '/img/Screenshot_1.png',
     ],
     tags: ['Мобильное приложение', 'Веб', '2024–2025'],
+  },
+  {
+    name: 'Mojo — mojo.education',
+    description:
+      'Платформа для управления школой: расписание, журнал, домашние задания, чат и платные услуги.',
+    link: 'https://mojo.education/',
+    id: 'mojo',
+    images: [1, 2, 3, 4, 5, 6, 7].map((n) => `/img/mojo/${n}.webp`),
+    portrait: true,
+    tags: ['Мобильное приложение', 'Веб'],
   },
 ]
 

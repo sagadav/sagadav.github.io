@@ -47,6 +47,23 @@ type ProjectVideoProps = {
   project: Project,
 }
 
+const PROJECT_DETAILS: Record<string, React.ReactNode> = {
+  project1: (
+    <>
+      <p>На первом слайде приложение для водителей сервиса mytripline.</p>
+      <p>
+        Скачать можно по ссылкам:{' '}
+        <a href="https://play.google.com/store/apps/details?id=org.capacitor.mytripline.app" target="_blank" rel="noopener noreferrer" className="text-sky-300 hover:underline">Google Play</a>
+        {' · '}
+        <a href="https://apps.apple.com/ru/app/mytripliner/id1668656764" target="_blank" rel="noopener noreferrer" className="text-sky-300 hover:underline">App Store</a>
+      </p>
+      <p>На втором слайде показана функция отслеживания водителей в реальном времени из приложения, которую я реализовал.</p>
+      <p>На третьем слайде страница входа на сайт для водителей, которую я сделал: <a className="text-sky-300 hover:underline" href="https://drivermytripline.com/" target="_blank" rel="noopener noreferrer">drivermytripline.com</a>.</p>
+      <p className={`${MONO} text-xs text-zinc-500`}>июнь 2024 — март 2025</p>
+    </>
+  ),
+}
+
 function ProjectVideo({ project }: ProjectVideoProps) {
   const src = project.video
   return (
@@ -68,6 +85,12 @@ function ProjectVideo({ project }: ProjectVideoProps) {
             playsInline
             className="aspect-video w-full cursor-zoom-in rounded-xl object-cover"
           />
+          : project.portrait ?
+            <div className="grid aspect-video w-full cursor-zoom-in grid-cols-4 gap-1 overflow-hidden rounded-xl">
+              {project.images?.slice(0, 4).map((el) =>
+                <img key={el} src={el} alt={project.name} className="h-full w-full object-cover object-top" />
+              )}
+            </div>
           : <img src={project.images ? project.images[0] : ''}
           alt={project.name}
           className="aspect-video w-full cursor-zoom-in rounded-xl object-cover"
@@ -98,12 +121,14 @@ function ProjectVideo({ project }: ProjectVideoProps) {
                 {
                   project.images?.map((el, i) =>
                     <CarouselItem key={i} className="p-4">
-                      <div className="relative aspect-video max-h-[50vh] rounded-2xl bg-zinc-950 p-1 ring-1 ring-white/10 ring-inset">
+                      {project.portrait ?
+                        <img src={el} alt={project.name} className="mx-auto h-[60vh] w-auto rounded-2xl object-contain" />
+                      : <div className="relative aspect-video max-h-[50vh] rounded-2xl bg-zinc-950 p-1 ring-1 ring-white/10 ring-inset">
                         <div
                           style={{ backgroundImage: `url(${el})` }}
                           className="aspect-video max-h-[50vh] w-full rounded-xl bg-cover"
                         />
-                      </div>
+                      </div>}
                     </CarouselItem>
                   )
                 }
@@ -114,16 +139,7 @@ function ProjectVideo({ project }: ProjectVideoProps) {
           </div>
           <div className="mx-6 mt-6 space-y-3 text-zinc-300">
             <h4 className="text-lg font-medium text-zinc-50">{project.name}</h4>
-            <p>На первом слайде приложение для водителей сервиса mytripline.</p>
-            <p>
-              Скачать можно по ссылкам:{' '}
-              <a href="https://play.google.com/store/apps/details?id=org.capacitor.mytripline.app" target="_blank" rel="noopener noreferrer" className="text-sky-300 hover:underline">Google Play</a>
-              {' · '}
-              <a href="https://apps.apple.com/ru/app/mytripliner/id1668656764" target="_blank" rel="noopener noreferrer" className="text-sky-300 hover:underline">App Store</a>
-            </p>
-            <p>На втором слайде показана функция отслеживания водителей в реальном времени из приложения, которую я реализовал.</p>
-            <p>На третьем слайде страница входа на сайт для водителей, которую я сделал: <a className="text-sky-300 hover:underline" href="https://drivermytripline.com/" target="_blank" rel="noopener noreferrer">drivermytripline.com</a>.</p>
-            <p className={`${MONO} text-xs text-zinc-500`}>июнь 2024 — март 2025</p>
+            {PROJECT_DETAILS[project.id]}
           </div>
         </MorphingDialogContent>
         <MorphingDialogClose
