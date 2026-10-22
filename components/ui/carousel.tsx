@@ -241,7 +241,8 @@ function CarouselContent({
   const [visibleItemsCount, setVisibleItemsCount] = useState(1);
   const dragX = useMotionValue(0);
   const containerRef = useRef<HTMLDivElement>(null);
-  const itemsLength = Children.count(children);
+  // toArray skips empty slots like `cond && <CarouselItem />`
+  const itemsLength = Children.toArray(children).length;
 
   useEffect(() => {
     if (!containerRef.current) {
