@@ -55,7 +55,7 @@ export const PROJECTS: Project[] = [
     id: 'mojo',
     images: [1, 2, 3, 4, 5, 6, 7].map((n) => `/img/mojo/${n}.webp`),
     portrait: true,
-    tags: ['Мобильное приложение', 'Веб'],
+    tags: ['Мобильное приложение', 'Веб', 'янв 2026 — сейчас'],
   },
 ]
 
