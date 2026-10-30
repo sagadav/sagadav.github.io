@@ -311,6 +311,19 @@
       "s_health": 2,
       "s_social": 2,
       "s_fame": 1
+    },
+    {
+      "id": "w25",
+      "label": "19–25 окт",
+      "start": "2026-10-19",
+      "days": 7,
+      "trainings": 3,
+      "calories_days": 3,
+      "talks": 11,
+      "s_money": 2,
+      "s_health": 2,
+      "s_social": 2,
+      "s_fame": 1
     }
   ],
   "lifts": [
@@ -793,6 +806,96 @@
       "count": 1,
       "note": "Ходили на заброшку в пятницу",
       "week_label": "12–18 окт"
+    },
+    {
+      "id": "c36",
+      "week": "w25",
+      "channel": "Качалка",
+      "who": "Глеб",
+      "format": "онлайн и вживую",
+      "count": 2,
+      "note": "Поговорили онлайн и встретились",
+      "week_label": "19–25 окт"
+    },
+    {
+      "id": "c37",
+      "week": "w25",
+      "channel": "Друзья и семья",
+      "who": "Альберт",
+      "format": "онлайн и вживую",
+      "count": 2,
+      "note": "Поговорили онлайн и встретились",
+      "week_label": "19–25 окт"
+    },
+    {
+      "id": "c38",
+      "week": "w25",
+      "channel": "Коллеги",
+      "who": "Анатолий",
+      "format": "онлайн",
+      "count": 1,
+      "note": "Поговорили",
+      "week_label": "19–25 окт"
+    },
+    {
+      "id": "c39",
+      "week": "w25",
+      "channel": "Random Coffee и айтишники",
+      "who": "Чел с Random Coffee",
+      "format": "онлайн",
+      "count": 1,
+      "note": "Random Coffee; получил ссылку ещё на одного такого бота",
+      "week_label": "19–25 окт"
+    },
+    {
+      "id": "c40",
+      "week": "w25",
+      "channel": "Друзья и семья",
+      "who": "Тимур",
+      "format": "вживую",
+      "count": 1,
+      "note": "Виделись",
+      "week_label": "19–25 окт"
+    },
+    {
+      "id": "c41",
+      "week": "w25",
+      "channel": "Друзья и семья",
+      "who": "Миха",
+      "format": "вживую",
+      "count": 1,
+      "note": "Виделись",
+      "week_label": "19–25 окт"
+    },
+    {
+      "id": "c42",
+      "week": "w25",
+      "channel": "Друзья и семья",
+      "who": "Линар",
+      "format": "вживую",
+      "count": 1,
+      "note": "Виделись",
+      "week_label": "19–25 окт"
+    },
+    {
+      "id": "c43",
+      "week": "w25",
+      "channel": "Друзья и семья",
+      "who": "Кирилл",
+      "format": "вживую",
+      "count": 1,
+      "note": "Виделись",
+      "week_label": "19–25 окт"
+    },
+    {
+      "id": "c44",
+      "week": "w25",
+      "channel": "Качалка",
+      "who": "Русик",
+      "format": "вживую",
+      "count": 1,
+      "note": "Ходили в качалку вместе",
+      "week_label": "19–25 окт"
     }
   ]
 }
