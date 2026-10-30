@@ -8,35 +8,17 @@ import './dashboard.css'
 const MONO = 'font-[family-name:var(--font-geist-mono)]'
 const CARD = 'glass min-w-0 rounded-2xl p-5'
 
-function Tile({
-  label,
-  sub,
-  children,
-}: {
-  label: string
-  sub: React.ReactNode
-  children: React.ReactNode
-}) {
+function Tile({ label, sub, children }: { label: string; sub: React.ReactNode; children: React.ReactNode }) {
   return (
     <div className={CARD}>
       <div className="text-xs text-zinc-400">{label}</div>
-      <div className="mt-1 text-3xl font-semibold tracking-tight text-zinc-50 tabular-nums">
-        {children}
-      </div>
+      <div className="mt-1 text-3xl font-semibold tracking-tight text-zinc-50 tabular-nums">{children}</div>
       <div className="mt-1 text-xs text-zinc-500">{sub}</div>
     </div>
   )
 }
 
-function Card({
-  title,
-  note,
-  children,
-}: {
-  title: string
-  note: React.ReactNode
-  children: React.ReactNode
-}) {
+function Card({ title, note, children }: { title: string; note: React.ReactNode; children: React.ReactNode }) {
   return (
     <section className={CARD}>
       <h3 className="font-medium text-zinc-50">{title}</h3>
@@ -81,19 +63,12 @@ export function Dashboard() {
     <div ref={ref} className="gp mt-16 flex flex-col gap-4">
       <Script src="/vendor/d3.v7.9.0.min.js" onReady={() => setD3Ready(true)} />
       <header className="mb-4">
-        <p
-          className={`${MONO} mb-2 text-xs tracking-widest text-sky-300 uppercase`}
-        >
-          {'// '}цели
-        </p>
-        <h1 className="text-4xl font-semibold tracking-tighter text-zinc-50 sm:text-5xl">
-          Полгода целей
-        </h1>
+        <p className={`${MONO} mb-2 text-xs tracking-widest text-sky-300 uppercase`}>{'// '}цели</p>
+        <h1 className="text-4xl font-semibold tracking-tighter text-zinc-50 sm:text-5xl">Полгода целей</h1>
         <p className="mt-3 max-w-xl text-zinc-400">
-          Апрель — октябрь 2026 по недельным отчётам. В зал хожу стабильно,
-          связи пошли вверх с сентября, жим в октябре сдвинулся с плато и
-          обновил рекорд, а подсчёт калорий в конце октября вернулся после паузы
-          с августа.
+          Апрель — октябрь 2026 по недельным отчётам. В зал хожу стабильно, связи пошли вверх с сентября, жим в
+          октябре сдвинулся с плато и обновил рекорд, а подсчёт калорий в конце октября вернулся после паузы с
+          августа.
         </p>
       </header>
 
@@ -111,8 +86,7 @@ export function Dashboard() {
           label="Разговоров за 6 недель"
           sub={
             <>
-              против <span data-field="talks_before">—</span> за 6 недель до
-              этого
+              против <span data-field="talks_before">—</span> за 6 недель до этого
             </>
           }
         >
@@ -120,51 +94,29 @@ export function Dashboard() {
         </Tile>
       </div>
 
-      <Card
-        title="Где было движение"
-        note="Оценка по тексту каждой недели: насколько заметно продвинулось каждое направление."
-      >
+      <Card title="Где было движение" note="Оценка по тексту каждой недели: насколько заметно продвинулось каждое направление.">
         <div className="chart heat" id="heat" />
         <div className="legend">
-          <span>
-            <i className="lg2" />
-            заметный результат
-          </span>
-          <span>
-            <i className="lg1" />
-            что-то сделано
-          </span>
-          <span>
-            <i className="lg0" />
-            пусто
-          </span>
-          <span>
-            <i className="lgn" />
-            нет записи
-          </span>
+          <span><i className="lg2" />заметный результат</span>
+          <span><i className="lg1" />что-то сделано</span>
+          <span><i className="lg0" />пусто</span>
+          <span><i className="lgn" />нет записи</span>
         </div>
       </Card>
 
       <SectionTitle>Здоровье</SectionTitle>
       <div className="grid gap-4 sm:grid-cols-2">
-        <Card
-          title="Тренировки в неделю"
-          note="Пропуски — недели без числа. 20 июл–2 авг — две недели одной записью."
-        >
+        <Card title="Тренировки в неделю" note="Пропуски — недели без числа. 20 июл–2 авг — две недели одной записью.">
           <div className="chart" id="train" />
         </Card>
-        <Card
-          title="Дни с подсчётом калорий"
-          note="Из 7. Пунктир — цель 4 из 7, поставленная в конце мая."
-        >
+        <Card title="Дни с подсчётом калорий" note="Из 7. Пунктир — цель 4 из 7, поставленная в конце мая.">
           <div className="chart" id="cal" />
         </Card>
         <Card
           title="Присед и жим"
           note={
             <>
-              Записанные веса. Полые точки — рабочий вес. Вес тела в мае —{' '}
-              <span id="body-weight">—</span> кг.
+              Записанные веса. Полые точки — рабочий вес. Вес тела в мае — <span id="body-weight">—</span> кг.
             </>
           }
         >
@@ -180,10 +132,7 @@ export function Dashboard() {
         <div className="chart" id="talks" />
         <div className="legend" id="talks-legend" />
       </Card>
-      <Card
-        title="Откуда связи"
-        note="Яркая часть — последние 6 недель, бледная — всё, что было до них."
-      >
+      <Card title="Откуда связи" note="Яркая часть — последние 6 недель, бледная — всё, что было до них.">
         <div className="chart" id="chan" />
       </Card>
       <Card title="Кто это был" note="Свежие сверху.">
