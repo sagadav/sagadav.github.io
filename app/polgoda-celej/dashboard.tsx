@@ -79,7 +79,7 @@ export function Dashboard() {
         <Tile label="Лучший присед" sub="сейчас рабочий меньше">
           <span data-field="best_squat">—</span> кг
         </Tile>
-        <Tile label="Лучший жим" sub="на раз, 21 октября; в мае было 75">
+        <Tile label="Лучший жим" sub="на раз, 21 октября">
           <span data-field="best_bench">—</span> кг
         </Tile>
         <Tile
