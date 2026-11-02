@@ -75,7 +75,7 @@ export const FUN_LINKS: FunLink[] = [
   {
     title: 'Индексная — лаборатория индексов',
     description: 'Создавай индексы и наблюдай, как база находит строки в таблице и B+tree.',
-    link: '/fun/index-lab/',
+    link: '/fun/index-lab',
   },
   {
     title: 'Песочница с бомбами',
