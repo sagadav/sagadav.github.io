@@ -73,6 +73,11 @@ export const BLOG_POSTS: BlogPost[] = [
 
 export const FUN_LINKS: FunLink[] = [
   {
+    title: 'Индексная — лаборатория индексов',
+    description: 'Создавай индексы и наблюдай, как база находит строки в таблице и B+tree.',
+    link: '/fun/index-lab/',
+  },
+  {
     title: 'Песочница с бомбами',
     description: 'Физическая игрушка: взрывай песок и блоки, бомбы детонируют цепочкой.',
     link: '/fun/pesochnica',
