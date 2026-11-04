@@ -324,6 +324,19 @@
       "s_health": 2,
       "s_social": 2,
       "s_fame": 1
+    },
+    {
+      "id": "w26",
+      "label": "26 окт–1 ноя",
+      "start": "2026-10-26",
+      "days": 7,
+      "trainings": 3,
+      "calories_days": 4,
+      "talks": 11,
+      "s_money": 2,
+      "s_health": 2,
+      "s_social": 2,
+      "s_fame": 2
     }
   ],
   "lifts": [
@@ -888,6 +901,116 @@
       "count": 1,
       "note": "Ходили в качалку вместе",
       "week_label": "19–25 окт"
+    },
+    {
+      "id": "c45",
+      "week": "w26",
+      "channel": "Качалка",
+      "who": "Русик",
+      "format": "вживую",
+      "count": 1,
+      "note": "Ходили в качалку вместе",
+      "week_label": "26 окт–1 ноя"
+    },
+    {
+      "id": "c46",
+      "week": "w26",
+      "channel": "Качалка",
+      "who": "Рушан",
+      "format": "вживую",
+      "count": 1,
+      "note": "Поговорили в пятницу",
+      "week_label": "26 окт–1 ноя"
+    },
+    {
+      "id": "c47",
+      "week": "w26",
+      "channel": "Качалка",
+      "who": "Олег",
+      "format": "вживую",
+      "count": 1,
+      "note": "Поговорили в воскресенье",
+      "week_label": "26 окт–1 ноя"
+    },
+    {
+      "id": "c48",
+      "week": "w26",
+      "channel": "Качалка",
+      "who": "Салтан",
+      "format": "онлайн",
+      "count": 1,
+      "note": "Договорились встретиться на следующей неделе",
+      "week_label": "26 окт–1 ноя"
+    },
+    {
+      "id": "c49",
+      "week": "w26",
+      "channel": "Random Coffee и айтишники",
+      "who": "Чел с Random Coffee",
+      "format": "онлайн",
+      "count": 1,
+      "note": "Поговорили",
+      "week_label": "26 окт–1 ноя"
+    },
+    {
+      "id": "c50",
+      "week": "w26",
+      "channel": "Random Coffee и айтишники",
+      "who": "Чел из чата Уфа кодеров",
+      "format": "онлайн",
+      "count": 1,
+      "note": "Поговорили",
+      "week_label": "26 окт–1 ноя"
+    },
+    {
+      "id": "c51",
+      "week": "w26",
+      "channel": "Random Coffee и айтишники",
+      "who": "Разработчик из Уфы",
+      "format": "онлайн",
+      "count": 1,
+      "note": "Ответил спустя три недели",
+      "week_label": "26 окт–1 ноя"
+    },
+    {
+      "id": "c52",
+      "week": "w26",
+      "channel": "Random Coffee и айтишники",
+      "who": "Дмитрий",
+      "format": "онлайн",
+      "count": 1,
+      "note": "Предложил проект по Telegram-боту, договорились созвониться в понедельник",
+      "week_label": "26 окт–1 ноя"
+    },
+    {
+      "id": "c53",
+      "week": "w26",
+      "channel": "Коллеги",
+      "who": "Анатолий",
+      "format": "онлайн",
+      "count": 1,
+      "note": "Общались",
+      "week_label": "26 окт–1 ноя"
+    },
+    {
+      "id": "c54",
+      "week": "w26",
+      "channel": "Друзья и семья",
+      "who": "Линар",
+      "format": "онлайн",
+      "count": 1,
+      "note": "Написал по поводу работы",
+      "week_label": "26 окт–1 ноя"
+    },
+    {
+      "id": "c55",
+      "week": "w26",
+      "channel": "Random Coffee и айтишники",
+      "who": "Азамат",
+      "format": "онлайн",
+      "count": 1,
+      "note": "Написал ему спустя год",
+      "week_label": "26 окт–1 ноя"
     }
   ]
 }
