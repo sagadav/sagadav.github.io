@@ -9,6 +9,9 @@ const chColor = (ch) => C[Math.max(0, CH.indexOf(ch))]
 const num = (v) => (v === null || v === undefined || v === '' ? null : Number(v))
 const sum = (a) => a.reduce((s, v) => s + (v || 0), 0)
 
+// Value from the most recent week that has it recorded.
+const latest = (weeks, key) => num([...weeks].reverse().find((w) => num(w[key]) !== null)?.[key])
+
 // Totals for the tiles: recorded trainings, best lifts, talks in the last 6 weeks vs the 6 before.
 function summary(weeks, lifts) {
   const max = (a) => a.filter((v) => v !== null).reduce((m, v) => (m === null || v > m ? v : m), null)
@@ -20,6 +23,10 @@ function summary(weeks, lifts) {
     best_bench: best('Жим'),
     talks_recent: sum(talks.slice(-6)),
     talks_before: sum(talks.slice(-12, -6)),
+    steps_avg: latest(weeks, 'steps_avg'),
+    protein_days: latest(weeks, 'protein_days'),
+    posts: latest(weeks, 'posts'),
+    applications: latest(weeks, 'applications'),
   }
 }
 
