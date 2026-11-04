@@ -65,7 +65,6 @@ export function Dashboard() {
       <header className="mb-4">
         <p className={`${MONO} mb-2 text-xs tracking-widest text-sky-300 uppercase`}>{'// '}цели</p>
         <h1 className="text-4xl font-semibold tracking-tighter text-zinc-50 sm:text-5xl">Полгода целей</h1>
-        <p className="mt-3 max-w-xl text-zinc-400">6 апреля — 1 ноября 2026 по недельным отчётам.</p>
       </header>
 
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
