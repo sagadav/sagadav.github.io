@@ -336,11 +336,7 @@
       "s_money": 2,
       "s_health": 2,
       "s_social": 2,
-      "s_fame": 2,
-      "steps_avg": 4968,
-      "protein_days": 3,
-      "posts": 4,
-      "applications": 10
+      "s_fame": 2
     }
   ],
   "lifts": [

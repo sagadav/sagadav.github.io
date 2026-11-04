@@ -89,21 +89,6 @@ export function Dashboard() {
         </Tile>
       </div>
 
-      <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
-        <Tile label="Шагов в день" sub="в среднем за месяц">
-          <span data-field="steps_avg">—</span>
-        </Tile>
-        <Tile label="Дней с белком 138+ г" sub="из 7, последняя неделя">
-          <span data-field="protein_days">—</span>
-        </Tile>
-        <Tile label="Постов и шортсов" sub="за последнюю неделю">
-          <span data-field="posts">—</span>
-        </Tile>
-        <Tile label="Откликов на вакансии" sub="за последнюю неделю">
-          <span data-field="applications">—</span>
-        </Tile>
-      </div>
-
       <Card title="Где было движение" note="Оценка по тексту каждой недели: насколько заметно продвинулось каждое направление.">
         <div className="chart heat" id="heat" />
         <div className="legend">
