@@ -337,6 +337,19 @@
       "s_health": 2,
       "s_social": 2,
       "s_fame": 2
+    },
+    {
+      "id": "w27",
+      "label": "2–7 ноя",
+      "start": "2026-11-02",
+      "days": 6,
+      "trainings": 2,
+      "calories_days": 4,
+      "talks": 13,
+      "s_money": 1,
+      "s_health": 1,
+      "s_social": 2,
+      "s_fame": 2
     }
   ],
   "lifts": [
@@ -1019,6 +1032,136 @@
       "count": 1,
       "note": "Написал ему спустя год",
       "week_label": "26 окт–1 ноя"
+    },
+    {
+      "id": "c56",
+      "week": "w27",
+      "channel": "Random Coffee и айтишники",
+      "who": "Чел с Random Coffee",
+      "format": "онлайн",
+      "count": 1,
+      "note": "Поговорили",
+      "week_label": "2–7 ноя"
+    },
+    {
+      "id": "c57",
+      "week": "w27",
+      "channel": "Друзья и семья",
+      "who": "Альба",
+      "format": "онлайн",
+      "count": 1,
+      "note": "Узнал, как дела",
+      "week_label": "2–7 ноя"
+    },
+    {
+      "id": "c58",
+      "week": "w27",
+      "channel": "Качалка",
+      "who": "Глеб",
+      "format": "онлайн",
+      "count": 1,
+      "note": "Узнал, как дела",
+      "week_label": "2–7 ноя"
+    },
+    {
+      "id": "c59",
+      "week": "w27",
+      "channel": "Качалка",
+      "who": "Салтан",
+      "format": "онлайн",
+      "count": 1,
+      "note": "Узнал, как дела",
+      "week_label": "2–7 ноя"
+    },
+    {
+      "id": "c60",
+      "week": "w27",
+      "channel": "Threads",
+      "who": "Чувак из Threads",
+      "format": "онлайн",
+      "count": 1,
+      "note": "Пообщались после поста",
+      "week_label": "2–7 ноя"
+    },
+    {
+      "id": "c61",
+      "week": "w27",
+      "channel": "Random Coffee и айтишники",
+      "who": "Дмитрий",
+      "format": "онлайн",
+      "count": 1,
+      "note": "Сделал ему проект: Telegram-бот на OpenRouter",
+      "week_label": "2–7 ноя"
+    },
+    {
+      "id": "c62",
+      "week": "w27",
+      "channel": "Random Coffee и айтишники",
+      "who": "Чат Уфа кодеров",
+      "format": "онлайн",
+      "count": 1,
+      "note": "Писал в чат",
+      "week_label": "2–7 ноя"
+    },
+    {
+      "id": "c63",
+      "week": "w27",
+      "channel": "Random Coffee и айтишники",
+      "who": "Чел из Яндекс Лицея",
+      "format": "онлайн",
+      "count": 1,
+      "note": "Поговорили",
+      "week_label": "2–7 ноя"
+    },
+    {
+      "id": "c64",
+      "week": "w27",
+      "channel": "Коллеги",
+      "who": "Артём",
+      "format": "онлайн",
+      "count": 1,
+      "note": "Бывший коллега, поговорили",
+      "week_label": "2–7 ноя"
+    },
+    {
+      "id": "c65",
+      "week": "w27",
+      "channel": "Random Coffee и айтишники",
+      "who": "Стас Юдин",
+      "format": "онлайн",
+      "count": 1,
+      "note": "Поговорили",
+      "week_label": "2–7 ноя"
+    },
+    {
+      "id": "c66",
+      "week": "w27",
+      "channel": "Друзья и семья",
+      "who": "Арсен",
+      "format": "онлайн",
+      "count": 1,
+      "note": "Однокласснику: предложил встретиться на следующей неделе",
+      "week_label": "2–7 ноя"
+    },
+    {
+      "id": "c67",
+      "week": "w27",
+      "channel": "Друзья и семья",
+      "who": "Кирилл",
+      "format": "онлайн",
+      "count": 1,
+      "note": "Однокласснику: предложил встретиться на следующей неделе",
+      "week_label": "2–7 ноя"
+    },
+    {
+      "id": "c68",
+      "week": "w27",
+      "channel": "Друзья и семья",
+      "who": "Коля",
+      "format": "онлайн",
+      "count": 1,
+      "note": "Однокласснику: предложил встретиться на следующей неделе",
+      "week_label": "2–7 ноя"
     }
   ]
 }
